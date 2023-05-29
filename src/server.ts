@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
-import app from './app';
-import { mongoURI, port } from './config';
+import mongoose from "mongoose";
+import app from "./app";
+import { mongoURI, port } from "./config";
 
 export async function connectDb() {
   try {
-    const connection = await mongoose.connect(mongoURI!);
+    const connection = await mongoose.connect(mongoURI as string);
     console.log(`Connected to database: ${connection.connection.host}`);
 
     app.listen(port, () => {
