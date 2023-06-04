@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\.8f54bcf1f693ed2a0a6660fac5d11d5c8a3abcf4-audit.json",
+    "files": [
+        {
+            "date": 1685876107746,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-04-06-16-success.log",
+            "hash": "0541565915d1efb062955d71622946a68ce4d3f7614a97bd627529d97de13970"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -22,7 +22,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.59.7",

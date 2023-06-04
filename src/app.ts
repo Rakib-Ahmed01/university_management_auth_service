@@ -4,7 +4,7 @@ import userRouter from "./app/modules/users/users.route";
 import {
   globalErrorHandler,
   notFoundErrorHandler,
-} from "./middleware/error.middleware";
+} from "./middlewares/error.middleware";
 
 // initialize app
 const app: Application = express();

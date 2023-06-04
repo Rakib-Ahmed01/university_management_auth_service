@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import app from "./app";
 import { mongoURI, port } from "./config";
-import { errorLogger, successLogger } from "./shared/logger";
+import { errorLogger, successLogger } from "./utils/logger";
 
 export async function connectDb() {
   try {
