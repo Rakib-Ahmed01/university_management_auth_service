@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 import app from "./app";
 import { mongoURI, port } from "./config";
+import { errorLogger, successLogger } from "./shared/logger";
 
 export async function connectDb() {
   try {
     const connection = await mongoose.connect(mongoURI as string);
-    console.log(`Connected to database: ${connection.connection.host}`);
+    successLogger.info(`Connected to database: ${connection.connection.host}`);
 
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      successLogger.info(`Auth service listening on port ${port}`);
     });
   } catch (error) {
-    console.log(`Failed to connect to database:`, error);
-    process.exit(1);
+    errorLogger.error(`Failed to connect to database:`, error);
   }
 }
 
