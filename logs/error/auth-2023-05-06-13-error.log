@@ -1,0 +1,2 @@
+Mon Jun 05 2023 13:24:2 [auth-service] error: 404 Resource Not Found!
+Mon Jun 05 2023 13:24:44 [auth-service] error: User validation failed: role: Path `role` is required.
