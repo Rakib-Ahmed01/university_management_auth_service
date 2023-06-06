@@ -1,7 +1,9 @@
 import { ErrorRequestHandler, RequestHandler } from "express";
+import { ZodError } from "zod";
 import ApiError from "../errors/ApiError";
-import { handleValidationError } from "../errors/handleValidationError";
-import { IGenericErrorMessage } from "../types/genericErrorMessage";
+import { handleValidationError } from "../errors/handleMongooseValidationError";
+import { handleZodValidationError } from "../errors/handleZodValidationError";
+import { IGenericErrorMessage } from "../types/GenericErrorMessage";
 
 export const notFoundErrorHandler: RequestHandler = (req, res, next) => {
   const error = new ApiError(404, "404 Resource Not Found!");
@@ -24,12 +26,24 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     status = simplifiedError.status;
     errorResponse.message = simplifiedError.message;
     errorResponse.errors = simplifiedError.errors;
+  } else if (error instanceof ZodError) {
+    const simplifiedError = handleZodValidationError(error);
+    status = simplifiedError.status;
+    errorResponse.message = simplifiedError.message;
+    errorResponse.errors = simplifiedError.errors;
   } else if (error instanceof ApiError) {
     errorResponse.message = error.message;
     errorResponse.errors = [{ path: "", message: error.message }];
   } else if (error instanceof Error) {
-    errorResponse.message = error.message;
-    errorResponse.errors = [{ path: "", message: error.message }];
+    errorResponse.message = error?.message
+      ? error.message
+      : errorResponse.message;
+    errorResponse.errors = [
+      {
+        path: "",
+        message: error?.message ? error.message : errorResponse.message,
+      },
+    ];
   }
 
   res.status(status).json(errorResponse);
