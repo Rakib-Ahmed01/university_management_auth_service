@@ -1,0 +1,4 @@
+Wed Jun 07 2023 14:6:36 [auth-service] info: Connected to database: 127.0.0.1
+Wed Jun 07 2023 14:6:36 [auth-service] info: Auth service listening on port 5000
+Wed Jun 07 2023 14:6:43 [auth-service] info: Connected to database: 127.0.0.1
+Wed Jun 07 2023 14:6:43 [auth-service] info: Auth service listening on port 5000

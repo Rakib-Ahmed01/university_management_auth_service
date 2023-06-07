@@ -1,7 +1,10 @@
+import { StatusCodes } from "http-status-codes";
 import { Schema, model } from "mongoose";
+import ApiError from "../../../errors/ApiError";
 import {
   academicSemesterCodes,
   academicSemesterMonths,
+  academicSemesterTitles,
 } from "./academicSemeter.constants";
 import {
   AcademicSemeterModel,
@@ -14,8 +17,8 @@ const academicSemester = new Schema<IAcademicSemeter>(
       type: String,
       required: true,
       enum: {
-        values: academicSemesterMonths,
-        message: `title must be - ${academicSemesterMonths.join(", ")}`,
+        values: academicSemesterTitles,
+        message: `title must be - ${academicSemesterTitles.join(", ")}`,
       },
     },
     year: {
@@ -47,6 +50,19 @@ const academicSemester = new Schema<IAcademicSemeter>(
     timestamps: true,
   }
 );
+
+academicSemester.pre("save", async function (next) {
+  const doesExist = await AcademicSemester.findOne({
+    year: this.year,
+    title: this.title,
+  });
+
+  if (doesExist) {
+    throw new ApiError(StatusCodes.CONFLICT, "Semester already exists");
+  }
+
+  next();
+});
 
 const AcademicSemester = model<IAcademicSemeter, AcademicSemeterModel>(
   "AcademicSemester",

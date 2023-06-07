@@ -1,8 +1,7 @@
 import cors from "cors";
 import express, { Application } from "express";
-import academicSemesterRouter from "./app/modules/academicSemester/academicSemester.route";
-import userRouter from "./app/modules/users/users.route";
 import globalErrorHandler, { notFoundErrorHandler } from "./middlewares/error";
+import { router } from "./routes";
 
 // initialize app
 const app: Application = express();
@@ -18,8 +17,7 @@ app.get("/", (req, res) => {
 });
 
 // routes
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/semesters", academicSemesterRouter);
+app.use("/", router);
 
 // error handling middleware
 app.use(notFoundErrorHandler);

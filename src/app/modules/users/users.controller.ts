@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import expressAsyncHandler from "express-async-handler";
+import { StatusCodes } from "http-status-codes";
+import { sendResponse } from "../../../utils/sendResponse";
+import { IUser } from "./users.interface";
 import {
   createUserService,
   getUserByIdService,
@@ -10,17 +13,36 @@ export const createUser = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const user = req.body;
     const createdUser = await createUserService(user);
-    res.status(200).json({ date: createdUser, success: true });
+
+    sendResponse<IUser>(res, {
+      data: createdUser,
+      message: "User created successfully",
+      statusCode: StatusCodes.OK,
+      success: true,
+    });
   }
 );
 
-export const getUsers = async (req: Request, res: Response) => {
-  const users = await getUsersService();
-  res.status(200).json({ date: users, success: true });
-};
+export const getUsers = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const users = await getUsersService();
 
-export const getUserById = async (req: Request, res: Response) => {
-  const userId = req.params.id;
-  const user = await getUserByIdService(userId);
-  res.status(200).json({ date: user, success: true });
-};
+    sendResponse<IUser>(res, {
+      data: users,
+      statusCode: StatusCodes.OK,
+      success: true,
+    });
+  }
+);
+
+export const getUserById = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.params.id;
+    const user = await getUserByIdService(userId);
+    sendResponse<IUser>(res, {
+      data: user,
+      statusCode: StatusCodes.OK,
+      success: true,
+    });
+  }
+);

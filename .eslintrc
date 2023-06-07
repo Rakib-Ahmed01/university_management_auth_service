@@ -15,7 +15,8 @@
     "no-console": "warn",
     "no-undefined": "warn",
     "no-unreachable": "warn",
-    "no-unused-expressions": "warn"
+    "no-unused-expressions": "warn",
+    "no-empty-function": "warn"
   },
   "env": {
     "browser": true,

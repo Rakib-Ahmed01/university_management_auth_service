@@ -1,15 +1,15 @@
 import { Model } from "mongoose";
 
 export type IAcademicSemeter = {
-  title: Title;
+  title: SemesterTitle;
   year: number;
-  code: Code;
-  startMonth: Month;
-  endMonth: Month;
+  code: SemesterCode;
+  startMonth: SemesterMonth;
+  endMonth: SemesterMonth;
 };
 
 export type AcademicSemeterModel = Model<IAcademicSemeter>;
-export type Month =
+export type SemesterMonth =
   | "January"
   | "February"
   | "March"
@@ -22,5 +22,5 @@ export type Month =
   | "October"
   | "November"
   | "December";
-export type Title = "autumn" | "summer" | "fall";
-export type Code = "01" | "02" | "03";
+export type SemesterTitle = "autumn" | "summer" | "fall";
+export type SemesterCode = "01" | "02" | "03";

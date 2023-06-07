@@ -8,8 +8,8 @@ export const handleValidationError = (
   const errors: IGenericErrorMessage[] = Object.values(error.errors).map(
     (err) => {
       return {
-        path: err.path,
-        message: err.message,
+        path: err?.path,
+        message: err?.message.replace("Path ", ""),
       };
     }
   );
