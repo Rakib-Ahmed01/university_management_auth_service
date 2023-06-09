@@ -13,6 +13,6 @@ export const validateRequest =
       });
       return next();
     } catch (error) {
-      next(error);
+      return next(error);
     }
   };

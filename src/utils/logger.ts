@@ -15,10 +15,6 @@ export const successLogger = createLogger({
   format: combine(label({ label: "auth-service" }), timestamp(), myFormat),
   transports: [
     new transports.Console(),
-    // new transports.File({
-    //   filename: path.join(process.cwd(), 'logs', 'success', 'success.log'),
-    //   level: 'info',
-    // }),
     new transports.DailyRotateFile({
       level: "info",
       filename: path.join(
@@ -39,10 +35,6 @@ export const errorLogger = createLogger({
   format: combine(label({ label: "auth-service" }), timestamp(), myFormat),
   transports: [
     new transports.Console(),
-    // new transports.File({
-    //   filename: path.join(process.cwd(), 'logs', 'error', 'error.log'),
-    //   level: 'error',
-    // }),
     new transports.DailyRotateFile({
       level: "error",
       filename: path.join(

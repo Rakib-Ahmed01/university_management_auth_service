@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
 import { IGenericErrorMessage } from "../types/GenericErrorMessage";
-import { ValidationErrorResponse } from "../types/ValidatonErrorResponse";
+import { ValidationErrorResponse } from "../types/ValidationErrorResponse";
 
 export const handleZodValidationError = (
   error: ZodError

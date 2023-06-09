@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // home route
 app.get("/", (req, res) => {
-  throw new Error();
   res.status(200).json({ message: "Welcome to Our University!" });
 });
 
