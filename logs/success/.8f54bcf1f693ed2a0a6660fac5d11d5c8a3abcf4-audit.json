@@ -1,75 +1,85 @@
 {
-  "keep": {
-    "days": true,
-    "amount": 14
-  },
-  "auditLog": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\.8f54bcf1f693ed2a0a6660fac5d11d5c8a3abcf4-audit.json",
-  "files": [
-    {
-      "date": 1685876107746,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-04-06-16-success.log",
-      "hash": "0541565915d1efb062955d71622946a68ce4d3f7614a97bd627529d97de13970"
+    "keep": {
+        "days": true,
+        "amount": 14
     },
-    {
-      "date": 1685878231152,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-04-06-17-success.log",
-      "hash": "afd654e7e4ba6239a1fcccde68b74fe44296a6a1c33d94e95315a41a76d19027"
-    },
-    {
-      "date": 1685949371037,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-13-success.log",
-      "hash": "9cc16109a70cb6c009c496aa8e06c75428418fe75d50ad855d199e71a5694130"
-    },
-    {
-      "date": 1685956479711,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-15-success.log",
-      "hash": "4e4dfa3dbaceb5834020b33d7dcdac666e6e6ae945b10dcc2dfabe4c2240579b"
-    },
-    {
-      "date": 1685964641946,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-17-success.log",
-      "hash": "18ed76b8fe418ba161843b19f1b6b7bff40590f831c1d8197d673baa3801e421"
-    },
-    {
-      "date": 1685966427285,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-18-success.log",
-      "hash": "d4c5d577e99fcc2f4134648067f4bc11b4258ad97782ffc84c181e72edfb368c"
-    },
-    {
-      "date": 1685971259841,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-19-success.log",
-      "hash": "e23c11d732903afac9df01b9c695cec564fe475d55a9b2d65896095a13f5a977"
-    },
-    {
-      "date": 1686037423513,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-13-success.log",
-      "hash": "cc5d2ce10b5a3285544a9815426fb56059d0855c3aca12b8f0896fd41411651a"
-    },
-    {
-      "date": 1686038532144,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-14-success.log",
-      "hash": "27a8f280934e41e605e4df80ad0a55e46b804dac0bdbe4a494aec34bd2481358"
-    },
-    {
-      "date": 1686045780277,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-16-success.log",
-      "hash": "b0c71bcff2994e1f76c38c49b8513631dacbeed5682bebcf22623712c01153fd"
-    },
-    {
-      "date": 1686052031324,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-17-success.log",
-      "hash": "4e0f6232ee1fc87832cd45ea9730567b1cb42430c291bddeb48a877f0d6c5091"
-    },
-    {
-      "date": 1686121595368,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-07-06-13-success.log",
-      "hash": "dd8483efb0d4af88a553ff3db3f353392028c305fc754e40c9e3b37469a964b5"
-    },
-    {
-      "date": 1686125196822,
-      "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-07-06-14-success.log",
-      "hash": "b359a7c2192c68c36a8c699d7f3adbcb76f089d7818be63967c82a2762e603c5"
-    }
-  ],
-  "hashType": "sha256"
+    "auditLog": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\.8f54bcf1f693ed2a0a6660fac5d11d5c8a3abcf4-audit.json",
+    "files": [
+        {
+            "date": 1685876107746,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-04-06-16-success.log",
+            "hash": "0541565915d1efb062955d71622946a68ce4d3f7614a97bd627529d97de13970"
+        },
+        {
+            "date": 1685878231152,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-04-06-17-success.log",
+            "hash": "afd654e7e4ba6239a1fcccde68b74fe44296a6a1c33d94e95315a41a76d19027"
+        },
+        {
+            "date": 1685949371037,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-13-success.log",
+            "hash": "9cc16109a70cb6c009c496aa8e06c75428418fe75d50ad855d199e71a5694130"
+        },
+        {
+            "date": 1685956479711,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-15-success.log",
+            "hash": "4e4dfa3dbaceb5834020b33d7dcdac666e6e6ae945b10dcc2dfabe4c2240579b"
+        },
+        {
+            "date": 1685964641946,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-17-success.log",
+            "hash": "18ed76b8fe418ba161843b19f1b6b7bff40590f831c1d8197d673baa3801e421"
+        },
+        {
+            "date": 1685966427285,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-18-success.log",
+            "hash": "d4c5d577e99fcc2f4134648067f4bc11b4258ad97782ffc84c181e72edfb368c"
+        },
+        {
+            "date": 1685971259841,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-05-06-19-success.log",
+            "hash": "e23c11d732903afac9df01b9c695cec564fe475d55a9b2d65896095a13f5a977"
+        },
+        {
+            "date": 1686037423513,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-13-success.log",
+            "hash": "cc5d2ce10b5a3285544a9815426fb56059d0855c3aca12b8f0896fd41411651a"
+        },
+        {
+            "date": 1686038532144,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-14-success.log",
+            "hash": "27a8f280934e41e605e4df80ad0a55e46b804dac0bdbe4a494aec34bd2481358"
+        },
+        {
+            "date": 1686045780277,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-16-success.log",
+            "hash": "b0c71bcff2994e1f76c38c49b8513631dacbeed5682bebcf22623712c01153fd"
+        },
+        {
+            "date": 1686052031324,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-06-06-17-success.log",
+            "hash": "4e0f6232ee1fc87832cd45ea9730567b1cb42430c291bddeb48a877f0d6c5091"
+        },
+        {
+            "date": 1686121595368,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-07-06-13-success.log",
+            "hash": "dd8483efb0d4af88a553ff3db3f353392028c305fc754e40c9e3b37469a964b5"
+        },
+        {
+            "date": 1686125196822,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-07-06-14-success.log",
+            "hash": "b359a7c2192c68c36a8c699d7f3adbcb76f089d7818be63967c82a2762e603c5"
+        },
+        {
+            "date": 1686380898285,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-10-06-13-success.log",
+            "hash": "a52e1fc367b0d8549cdee0d895b8067de3d57d992c4678ced015bce64dde92a5"
+        },
+        {
+            "date": 1686384109694,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\success\\auth-2023-10-06-14-success.log",
+            "hash": "b747160b801687c5851f3e62086e0416f936f99fc98970e119f44728075fcc9a"
+        }
+    ],
+    "hashType": "sha256"
 }

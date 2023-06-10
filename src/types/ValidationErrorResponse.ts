@@ -1,4 +1,4 @@
-import { IGenericErrorMessage } from "./GenericErrorMessage";
+import { IGenericErrorMessage } from "./ErrorMessage";
 
 export type ValidationErrorResponse = {
   status: number;

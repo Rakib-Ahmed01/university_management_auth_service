@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { IGenericErrorMessage } from "../types/GenericErrorMessage";
+import { IGenericErrorMessage } from "../types/ErrorMessage";
 import { ValidationErrorResponse } from "../types/ValidationErrorResponse";
 
 export const handleValidationError = (

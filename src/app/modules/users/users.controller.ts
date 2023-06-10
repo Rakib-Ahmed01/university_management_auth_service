@@ -5,8 +5,8 @@ import { sendResponse } from "../../../utils/sendResponse";
 import { IUser } from "./users.interface";
 import {
   createUserService,
+  getAllUsersService,
   getUserByIdService,
-  getUsersService,
 } from "./users.services";
 
 export const createUser = expressAsyncHandler(
@@ -23,9 +23,9 @@ export const createUser = expressAsyncHandler(
   }
 );
 
-export const getUsers = expressAsyncHandler(
+export const getAllUsers = expressAsyncHandler(
   async (req: Request, res: Response) => {
-    const users = await getUsersService();
+    const users = await getAllUsersService();
 
     sendResponse<IUser>(res, {
       data: users,

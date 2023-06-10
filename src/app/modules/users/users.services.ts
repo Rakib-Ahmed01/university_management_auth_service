@@ -22,7 +22,7 @@ export const createUserService = async (user: IUser) => {
   return createdUser;
 };
 
-export const getUsersService = async () => {
+export const getAllUsersService = async () => {
   const users = await User.find();
   return users;
 };

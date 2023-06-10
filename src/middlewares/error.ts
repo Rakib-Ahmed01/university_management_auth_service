@@ -3,7 +3,7 @@ import { ZodError } from "zod";
 import ApiError from "../errors/ApiError";
 import { handleValidationError } from "../errors/handleMongooseValidationError";
 import { handleZodValidationError } from "../errors/handleZodValidationError";
-import { IGenericErrorMessage } from "../types/GenericErrorMessage";
+import { IGenericErrorMessage } from "../types/ErrorMessage";
 
 export const notFoundErrorHandler: RequestHandler = (req, res, next) => {
   const error = new ApiError(404, "404 Resource Not Found!");
