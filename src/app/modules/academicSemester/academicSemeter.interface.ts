@@ -2,7 +2,7 @@ import { Model } from "mongoose";
 
 export type IAcademicSemeter = {
   title: SemesterTitle;
-  year: number;
+  year: string;
   code: SemesterCode;
   startMonth: SemesterMonth;
   endMonth: SemesterMonth;

@@ -1,8 +1,11 @@
 import { Server } from "http";
 import mongoose from "mongoose";
+import util from "util";
 import app from "./app";
 import { mongoURI, port } from "./config";
 import { errorLogger, successLogger } from "./utils/logger";
+
+util.inspect.defaultOptions.depth = null;
 
 let server: Server;
 

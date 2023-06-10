@@ -1,6 +1,6 @@
 export type PaginationOptions = {
-  page?: number;
-  limit?: number;
-  sortBy?: string;
-  sortOrder?: "asc" | "desc";
+  page: number;
+  limit: number;
+  sortBy: string;
+  sortOrder: "asc" | "desc";
 };

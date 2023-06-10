@@ -1,7 +1,10 @@
 import { StatusCodes } from "http-status-codes";
 import ApiError from "../../../errors/ApiError";
+import { FilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { PaginationResponse } from "../../../types/PaginationResponse";
+import { generateSearchCondition } from "../../../utils/generateSearchCondition";
+import { calculateSkip } from "./../../../utils/calculateSkip";
 import { semesterTitleCodeMapper } from "./academicSemeter.constants";
 import { IAcademicSemeter } from "./academicSemeter.interface";
 import AcademicSemester from "./academicSemeter.model";
@@ -23,17 +26,29 @@ export const createAcademicSemesterService = async (
 };
 
 export const getAllSemestersService = async (
-  paginationOptions: PaginationOptions
+  paginationOptions: PaginationOptions,
+  filters: FilterOptions
 ): Promise<PaginationResponse<IAcademicSemeter[]>> => {
-  const { page = 1, limit = 10 } = paginationOptions;
-  const skip = (page - 1) * limit;
+  const { page, limit, skip } = calculateSkip(paginationOptions);
+  const { sortBy, sortOrder } = paginationOptions;
+  const { search, ...filterableFields } = filters;
 
-  const semesters = await AcademicSemester.find()
-    .skip(skip)
-    .limit(limit)
-    .sort();
+  const searchCondition = generateSearchCondition("or", search, [
+    "title",
+    "code",
+    "year",
+  ]);
 
-  const total = await AcademicSemester.countDocuments();
+  const [semesters, total] = await Promise.all([
+    AcademicSemester.find({ $and: [searchCondition, filterableFields] })
+      .skip(skip)
+      .limit(limit)
+      .sort({
+        [sortBy]: sortOrder,
+      })
+      .lean(),
+    AcademicSemester.countDocuments(),
+  ]);
 
   return {
     meta: {

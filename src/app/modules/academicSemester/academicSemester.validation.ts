@@ -7,9 +7,9 @@ export const createAcademicSemesterZodSchema = z.object({
       required_error: "title is required",
       invalid_type_error: "title must be - autumn, summer or fall",
     }),
-    year: z.number({
+    year: z.string({
       required_error: "year is required",
-      invalid_type_error: "year must be a number",
+      invalid_type_error: "year must be a string",
     }),
     code: z.enum(["01", "02", "03"], {
       required_error: "code is required",
