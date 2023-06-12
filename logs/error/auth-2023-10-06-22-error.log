@@ -1,0 +1,2 @@
+Sat Jun 10 2023 22:48:5 [auth-service] error: Parameter "filter" to findOne() must be an object, got "[object Promise]" (type object)
+Sat Jun 10 2023 22:49:13 [auth-service] error: Parameter "filter" to findOne() must be an object, got "[object Promise]" (type object)

@@ -1,24 +1,23 @@
-import { StatusCodes } from "http-status-codes";
 import ApiError from "../../../errors/ApiError";
 import { FilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { PaginationResponse } from "../../../types/PaginationResponse";
 import { generateSearchCondition } from "../../../utils/generateSearchCondition";
+import { validateTitleCode } from "../../../utils/validateTitleCode";
 import { calculateSkip } from "./../../../utils/calculateSkip";
-import { semesterTitleCodeMapper } from "./academicSemeter.constants";
 import { IAcademicSemeter } from "./academicSemeter.interface";
 import AcademicSemester from "./academicSemeter.model";
 
 export const createAcademicSemesterService = async (
   semester: IAcademicSemeter
 ): Promise<IAcademicSemeter> => {
-  if (semesterTitleCodeMapper[semester.code] !== semester.title) {
-    throw new ApiError(
-      StatusCodes.BAD_REQUEST,
-      `Invalid semester code: ${semester.code} code should be ${
-        semesterTitleCodeMapper[semester.code]
-      }`
-    );
+  const isValidTitleOrCode = await validateTitleCode(
+    semester.code,
+    semester.title
+  );
+
+  if (isValidTitleOrCode instanceof ApiError) {
+    throw isValidTitleOrCode;
   }
 
   const createdSemester = await AcademicSemester.create(semester);
@@ -58,4 +57,33 @@ export const getAllSemestersService = async (
     },
     data: semesters,
   };
+};
+
+export const getSemesterByIdService = async (
+  semesterId: string
+): Promise<IAcademicSemeter | null> => {
+  const semester = await AcademicSemester.findOne({ _id: semesterId });
+  return semester;
+};
+
+export const updateSemesterService = async (
+  semesterId: string,
+  payload: Partial<IAcademicSemeter>
+) => {
+  const isValidTitleOrCode = await validateTitleCode(
+    payload.code,
+    payload.title,
+    semesterId
+  );
+
+  if (isValidTitleOrCode instanceof ApiError) {
+    throw isValidTitleOrCode;
+  }
+
+  const updatedSemester = await AcademicSemester.findOneAndUpdate(
+    { _id: semesterId },
+    payload,
+    { new: true }
+  );
+  return updatedSemester;
 };

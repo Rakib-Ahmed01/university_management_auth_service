@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { Schema, model } from "mongoose";
+import { FilterQuery, Schema, Types, UpdateQuery, model } from "mongoose";
 import ApiError from "../../../errors/ApiError";
 import {
   academicSemesterCodes,
@@ -58,7 +58,38 @@ academicSemester.pre("save", async function (next) {
   });
 
   if (doesExist) {
-    throw new ApiError(StatusCodes.CONFLICT, "Semester already exists");
+    next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
+  }
+
+  next();
+});
+
+academicSemester.pre("findOneAndUpdate", async function (next) {
+  const filters = this.getFilter() as FilterQuery<
+    Partial<{ _id: Types.ObjectId }>
+  >;
+
+  const updateData = this.getUpdate() as UpdateQuery<
+    Partial<IAcademicSemeter>
+  > &
+    Partial<IAcademicSemeter>;
+
+  const docToUpdate = await AcademicSemester.findOne({
+    _id: filters?._id,
+  });
+
+  const doesExist = await AcademicSemester.findOne({
+    _id: { $ne: docToUpdate?._id },
+    year: updateData?.year || docToUpdate?.year,
+    code: updateData?.code || docToUpdate?.code,
+  });
+
+  if (!updateData) {
+    next(new ApiError(StatusCodes.BAD_REQUEST, "Missing update data"));
+  }
+
+  if (doesExist) {
+    next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
   }
 
   next();

@@ -34,6 +34,14 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   } else if (error instanceof ApiError) {
     errorResponse.message = error.message;
     errorResponse.errors = [{ path: "", message: error.message }];
+  } else if (error.name === "CastError") {
+    errorResponse.message = `Invalid ${error.path}`;
+    errorResponse.errors = [
+      {
+        path: error.path,
+        message: `Invalid ${error.path}`,
+      },
+    ];
   } else if (error instanceof Error) {
     errorResponse.message = error?.message
       ? error.message
