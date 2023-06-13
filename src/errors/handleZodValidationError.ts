@@ -13,7 +13,7 @@ export const handleZodValidationError = (
   });
 
   return {
-    status: 403,
+    status: 400,
     message: "Validation Error",
     errors,
   };

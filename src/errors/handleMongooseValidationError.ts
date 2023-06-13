@@ -15,7 +15,7 @@ export const handleValidationError = (
   );
 
   return {
-    status: 403,
+    status: 400,
     message: "Validation Error",
     errors,
   };

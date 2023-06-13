@@ -1,6 +1,7 @@
 import { ErrorRequestHandler, RequestHandler } from "express";
 import { ZodError } from "zod";
 import ApiError from "../errors/ApiError";
+import { handleMongoServerError } from "../errors/handleMongoServerError";
 import { handleValidationError } from "../errors/handleMongooseValidationError";
 import { handleZodValidationError } from "../errors/handleZodValidationError";
 import { IGenericErrorMessage } from "../types/ErrorMessage";
@@ -42,6 +43,11 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
         message: `Invalid ${error.path}`,
       },
     ];
+  } else if (error.name === "MongoServerError") {
+    const simplifiedError = handleMongoServerError(error);
+    status = simplifiedError.status;
+    errorResponse.message = simplifiedError.message;
+    errorResponse.errors = simplifiedError.errors;
   } else if (error instanceof Error) {
     errorResponse.message = error?.message
       ? error.message

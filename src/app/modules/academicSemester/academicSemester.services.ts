@@ -87,3 +87,8 @@ export const updateSemesterService = async (
   );
   return updatedSemester;
 };
+
+export const deleteSemesterService = async (semesterId: string) => {
+  const semester = await AcademicSemester.deleteOne({ _id: semesterId });
+  return semester;
+};

@@ -9,6 +9,7 @@ import { pickOptions } from "../../../utils/pickOptions";
 import { sendResponse } from "../../../utils/sendResponse";
 import {
   createAcademicSemesterService,
+  deleteSemesterService,
   getAllSemestersService,
   getSemesterByIdService,
   updateSemesterService,
@@ -76,6 +77,21 @@ export const updateSemester = expressAsyncHandler(
       success: true,
       statusCode: StatusCodes.OK,
       message: "Semester updated successfully",
+    });
+  }
+);
+
+export const deleteSemester = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const semesterId = req.params.semesterId;
+
+    const result = await deleteSemesterService(semesterId);
+
+    sendResponse(res, {
+      data: result,
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Semester deleted successfully",
     });
   }
 );

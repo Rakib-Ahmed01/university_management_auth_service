@@ -11,7 +11,7 @@ import {
   IAcademicSemeter,
 } from "./academicSemeter.interface";
 
-const academicSemester = new Schema<IAcademicSemeter>(
+const academicSemester = new Schema<IAcademicSemeter, AcademicSemeterModel>(
   {
     title: {
       type: String,
@@ -74,6 +74,10 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
   > &
     Partial<IAcademicSemeter>;
 
+  if (!updateData) {
+    return next(new ApiError(StatusCodes.BAD_REQUEST, "Missing update data"));
+  }
+
   const docToUpdate = await AcademicSemester.findOne({
     _id: filters?._id,
   });
@@ -84,12 +88,8 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
     code: updateData?.code || docToUpdate?.code,
   });
 
-  if (!updateData) {
-    next(new ApiError(StatusCodes.BAD_REQUEST, "Missing update data"));
-  }
-
   if (doesExist) {
-    next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
+    return next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
   }
 
   next();
