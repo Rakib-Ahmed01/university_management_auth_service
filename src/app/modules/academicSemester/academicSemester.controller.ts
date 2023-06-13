@@ -3,7 +3,8 @@ import expressAsyncHandler from "express-async-handler";
 import { StatusCodes } from "http-status-codes";
 import { filterFields } from "../../../constants/filters";
 import { paginationFields } from "../../../constants/pagination";
-import { FilterOptions } from "../../../types/FilterOptions";
+import ApiError from "../../../errors/ApiError";
+import { AcademicSemesterFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { pickOptions } from "../../../utils/pickOptions";
 import { sendResponse } from "../../../utils/sendResponse";
@@ -38,7 +39,7 @@ export const getAllSemesters = expressAsyncHandler(
     const filters = pickOptions(
       req.query as Record<string, unknown>,
       filterFields
-    ) as FilterOptions;
+    ) as AcademicSemesterFilterOptions;
 
     const result = await getAllSemestersService(paginationOptions, filters);
 
@@ -56,6 +57,10 @@ export const getSemesterById = expressAsyncHandler(
     const semesterId = req.params.semesterId;
 
     const semester = await getSemesterByIdService(semesterId);
+
+    if (!semester) {
+      throw new ApiError(StatusCodes.NOT_FOUND, "Semester not found");
+    }
 
     sendResponse<IAcademicSemeter>(res, {
       data: semester,

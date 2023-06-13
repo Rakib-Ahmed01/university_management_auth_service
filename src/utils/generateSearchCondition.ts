@@ -16,3 +16,14 @@ export const generateSearchCondition = (
   }
   return {};
 };
+
+// {
+//  $or: [
+//     {
+//       title: {
+//         $regex: 'search',
+//         $options: "i",
+//       }
+//     }
+//   ]
+// }
