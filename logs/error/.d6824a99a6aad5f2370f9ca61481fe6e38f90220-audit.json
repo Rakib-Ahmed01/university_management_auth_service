@@ -169,6 +169,26 @@
             "date": 1686679008900,
             "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\error\\auth-2023-13-06-23-error.log",
             "hash": "304d895660840e727dc4c90153fee1d4692696007bb772e3a3922037db7f6a77"
+        },
+        {
+            "date": 1686679253870,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\error\\auth-2023-14-06-00-error.log",
+            "hash": "e048bb7e402706178e691927b17bb8c2994274dcbf4b15cc0b694286de0abd01"
+        },
+        {
+            "date": 1686727620483,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\error\\auth-2023-14-06-13-error.log",
+            "hash": "64520cd3e43072336cfb3868bdaece4184b011d065768883907bdb03f977c04e"
+        },
+        {
+            "date": 1686734497336,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\error\\auth-2023-14-06-15-error.log",
+            "hash": "e19654c7ce5227e989c4c1dca2f2ade32737203c2c0750a665d4218b954ff5eb"
+        },
+        {
+            "date": 1686742719711,
+            "name": "C:\\Users\\New PC\\Desktop\\Work\\git push\\next_level_web_development\\university_management_system\\auth_service\\logs\\error\\auth-2023-14-06-17-error.log",
+            "hash": "5b9cd0a68972ad9443dffa7a3f4a15f3a0555353b979a525a17a9c6059461514"
         }
     ],
     "hashType": "sha256"

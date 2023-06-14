@@ -34,11 +34,11 @@ export const createAcademicFaculty = expressAsyncHandler(
 export const getAllAcademicFaculty = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const paginationOptions = pickOptions(
-      req.query as Record<string, unknown>,
+      req.query as QueryObject,
       paginationFields
     ) as PaginationOptions;
 
-    const filterOptions = pickOptions(req.query as Record<string, unknown>, [
+    const filterOptions = pickOptions(req.query as QueryObject, [
       "search",
       "title",
     ]) as AcademicFacultyFilterOptions;

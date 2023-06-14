@@ -3,7 +3,9 @@ import { PaginationOptions } from "../types/PaginationOptions";
 export const calculateSkip = (
   paginationOptions: Pick<PaginationOptions, "limit" | "page">
 ) => {
-  const { page = 1, limit = 10 } = paginationOptions;
-  const skip = (page - 1) * limit;
-  return { page, skip, limit };
+  const { page, limit } = paginationOptions;
+  const numberedPage = Number(page) || 1;
+  const numberedPageLimit = Number(limit) || 10;
+  const skip = (numberedPage - 1) * numberedPageLimit;
+  return { page: numberedPage, skip, limit: numberedPageLimit };
 };

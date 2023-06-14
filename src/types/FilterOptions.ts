@@ -9,3 +9,8 @@ export type AcademicFacultyFilterOptions = {
   title: string;
   search: string;
 };
+
+export type AcademicDepartmentFilterOptions = {
+  title: string;
+  search: string;
+};

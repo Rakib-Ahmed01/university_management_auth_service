@@ -1,27 +1,44 @@
+// export const pickOptions = <
+//   T extends Record<string, unknown>,
+//   K extends keyof T
+// >(
+//   obj: T,
+//   keys: K[]
+// ) => {
+//   const options: { [K in keyof T]: T[K] } = {} as { [K in keyof T]: T[K] };
+
+//   for (const key of keys) {
+//     if (obj[key]) {
+//       if (key === 'limit') {
+//         options[key] = Number(obj[key]) as T[K];
+//       } else if (key === 'page') {
+//         options[key] = Number(obj[key]) as T[K];
+//       } else if (key === 'sortBy') {
+//         options[key] = (obj[key] || 'createdAt') as T[K];
+//       } else if (key === 'sortOrder') {
+//         options[key] = (obj[key] || 'desc') as T[K];
+//       } else {
+//         options[key] = obj[key];
+//       }
+//     }
+//   }
+
+//   return options;
+// };
+
 export const pickOptions = <
   T extends Record<string, unknown>,
-  K extends keyof T
+  K extends string[]
 >(
-  obj: T,
-  keys: K[]
+  queryObject: T,
+  keys: K
 ) => {
-  const options: { [K in keyof T]: T[K] } = {} as { [K in keyof T]: T[K] };
+  const options: Record<string, unknown> = {};
 
   for (const key of keys) {
-    if (obj[key]) {
-      if (key === "limit") {
-        options[key] = Number(obj[key]) as T[K];
-      } else if (key === "page") {
-        options[key] = Number(obj[key]) as T[K];
-      } else if (key === "sortBy") {
-        options[key] = (obj[key] || "createdAt") as T[K];
-      } else if (key === "sortOrder") {
-        options[key] = (obj[key] || "desc") as T[K];
-      } else {
-        options[key] = obj[key];
-      }
+    if (queryObject[key]) {
+      options[key] = queryObject[key];
     }
   }
-
   return options;
 };

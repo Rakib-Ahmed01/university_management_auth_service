@@ -26,11 +26,11 @@ export const createAcademicSemesterService = async (
 
 export const getAllSemestersService = async (
   paginationOptions: PaginationOptions,
-  filters: AcademicFacultyFilterOptions
+  filterOptions: AcademicFacultyFilterOptions
 ): Promise<PaginationResponse<IAcademicSemeter[]>> => {
   const { page, limit, skip } = calculateSkip(paginationOptions);
   const { sortBy, sortOrder } = paginationOptions;
-  const { search, ...filterableFields } = filters;
+  const { search, ...filters } = filterOptions;
 
   const searchCondition = generateSearchCondition("or", search, [
     "title",
@@ -39,7 +39,7 @@ export const getAllSemestersService = async (
   ]);
 
   const [semesters, total] = await Promise.all([
-    AcademicSemester.find({ $and: [searchCondition, filterableFields] })
+    AcademicSemester.find({ $and: [searchCondition, filters] })
       .skip(skip)
       .limit(limit)
       .sort({

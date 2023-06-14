@@ -3,6 +3,7 @@ import { PaginationOptions } from "../../../types/PaginationOptions";
 import { PaginationResponse } from "../../../types/PaginationResponse";
 import { calculateSkip } from "../../../utils/calculateSkip";
 import { generateSearchCondition } from "../../../utils/generateSearchCondition";
+import { handleSortByAndSortOrder } from "../../../utils/handleSortByAndSortOrder";
 import { IAcademicFaculty } from "./academicFaculty.interface";
 import { AcademicFaculty } from "./academicFaculty.model";
 
@@ -18,7 +19,8 @@ export const getAllAcademicFacultyService = async (
   filterOptions: AcademicFacultyFilterOptions
 ): Promise<PaginationResponse<IAcademicFaculty[]>> => {
   const { limit, page, skip } = calculateSkip(paginationOptions);
-  const { search, ...filters } = filterOptions;
+  const { sortBy, sortOrder } = handleSortByAndSortOrder(paginationOptions);
+  const { search, ...filters } = filterOptions || {};
 
   const searchCondition = generateSearchCondition("or", search, ["title"]);
 
@@ -27,8 +29,9 @@ export const getAllAcademicFacultyService = async (
       $and: [searchCondition, filters],
     })
       .skip(skip)
-      .limit(limit),
-    AcademicFaculty.find().countDocuments(),
+      .limit(limit)
+      .sort({ [sortBy]: sortOrder }),
+    AcademicFaculty.countDocuments(),
   ]);
 
   return {

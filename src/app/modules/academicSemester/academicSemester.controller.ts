@@ -32,12 +32,12 @@ export const createSemester = expressAsyncHandler(
 export const getAllSemesters = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const paginationOptions = pickOptions(
-      req.query as Record<string, unknown>,
+      req.query as QueryObject,
       paginationFields
     ) as PaginationOptions;
 
     const filters = pickOptions(
-      req.query as Record<string, unknown>,
+      req.query as QueryObject,
       filterFields
     ) as AcademicSemesterFilterOptions;
 
