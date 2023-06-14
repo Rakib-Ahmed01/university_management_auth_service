@@ -3,9 +3,11 @@ import { z } from "zod";
 
 export const createAcademicDepartmentZodSchema = z.object({
   body: z.object({
-    title: z.string({
-      required_error: "Title is required",
-    }),
+    title: z
+      .string({
+        required_error: "Title is required",
+      })
+      .min(3),
     academicFaculty: z
       .string({
         required_error: "Academic Faculty is required",
@@ -22,6 +24,7 @@ export const updateAcademicDepartmentZodSchema = z.object({
       .string({
         required_error: "Title is required",
       })
+      .min(3)
       .optional(),
     academicFaculty: z
       .string({

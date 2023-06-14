@@ -1,3 +1,5 @@
+import { StatusCodes } from "http-status-codes";
+import ApiError from "../../../errors/ApiError";
 import { AcademicDepartmentFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { PaginationResponse } from "../../../types/PaginationResponse";
@@ -27,7 +29,8 @@ export const getAllAcademicDepartmentService = async (
     AcademicDepartment.find({ $and: [searchCondition, filters] })
       .sort({ [sortBy]: sortOrder })
       .skip(skip)
-      .limit(limit),
+      .limit(limit)
+      .populate("academicFaculty"),
     AcademicDepartment.countDocuments(),
   ]);
 
@@ -39,4 +42,43 @@ export const getAllAcademicDepartmentService = async (
     },
     data: departments,
   };
+};
+
+export const getDepartmentByIdService = async (
+  departmentId: string
+): Promise<IAcademicDepartment | null> => {
+  const department = await AcademicDepartment.findOne({
+    _id: departmentId,
+  }).populate("academicFaculty");
+  return department;
+};
+
+export const updateDepartmentService = async (
+  departmentId: string,
+  payload: Partial<IAcademicDepartment>
+) => {
+  if (Object.keys(payload).length === 0) {
+    throw new ApiError(StatusCodes.BAD_REQUEST, "Missing update data");
+  } else if (
+    !Object.keys(payload).includes("title") &&
+    !Object.keys(payload).includes("academicFaculty")
+  ) {
+    throw new ApiError(
+      StatusCodes.BAD_REQUEST,
+      "Missing update data. Title or Academic Faculty Id is required"
+    );
+  }
+
+  const updatedDepartment = await AcademicDepartment.findOneAndUpdate(
+    { _id: departmentId },
+    payload,
+    { new: true }
+  );
+
+  return updatedDepartment;
+};
+
+export const deleteDepartmentService = async (departmentId: string) => {
+  const result = await AcademicDepartment.deleteOne({ _id: departmentId });
+  return result;
 };

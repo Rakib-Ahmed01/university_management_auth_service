@@ -5,13 +5,13 @@ import {
   academicSemesterCodes,
   academicSemesterMonths,
   academicSemesterTitles,
-} from "./academicSemeter.constants";
+} from "./academicSemester.constants";
 import {
-  AcademicSemeterModel,
-  IAcademicSemeter,
-} from "./academicSemeter.interface";
+  AcademicSemesterModel,
+  IAcademicSemester,
+} from "./academicSemester.interface";
 
-const academicSemester = new Schema<IAcademicSemeter, AcademicSemeterModel>(
+const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
   {
     title: {
       type: String,
@@ -70,9 +70,9 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
   >;
 
   const updateData = this.getUpdate() as UpdateQuery<
-    Partial<IAcademicSemeter>
+    Partial<IAcademicSemester>
   > &
-    Partial<IAcademicSemeter>;
+    Partial<IAcademicSemester>;
 
   if (!updateData) {
     return next(new ApiError(StatusCodes.BAD_REQUEST, "Missing update data"));
@@ -95,7 +95,7 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
   next();
 });
 
-const AcademicSemester = model<IAcademicSemeter, AcademicSemeterModel>(
+const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
   "AcademicSemester",
   academicSemester
 );

@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { semesterTitleCodeMapper } from "../app/modules/academicSemester/academicSemeter.constants";
-import AcademicSemester from "../app/modules/academicSemester/academicSemeter.model";
+import { semesterTitleCodeMapper } from "../app/modules/academicSemester/academicSemester.constants";
+import AcademicSemester from "../app/modules/academicSemester/academicSemester.model";
 import ApiError from "../errors/ApiError";
 
 const returnError = (code: string) => {

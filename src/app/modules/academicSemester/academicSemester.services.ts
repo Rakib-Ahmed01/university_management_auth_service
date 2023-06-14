@@ -5,12 +5,12 @@ import { PaginationResponse } from "../../../types/PaginationResponse";
 import { generateSearchCondition } from "../../../utils/generateSearchCondition";
 import { validateTitleCode } from "../../../utils/validateTitleCode";
 import { calculateSkip } from "./../../../utils/calculateSkip";
-import { IAcademicSemeter } from "./academicSemeter.interface";
-import AcademicSemester from "./academicSemeter.model";
+import { IAcademicSemester } from "./academicSemester.interface";
+import AcademicSemester from "./academicSemester.model";
 
 export const createAcademicSemesterService = async (
-  semester: IAcademicSemeter
-): Promise<IAcademicSemeter> => {
+  semester: IAcademicSemester
+): Promise<IAcademicSemester> => {
   const isValidTitleOrCode = await validateTitleCode(
     semester.code,
     semester.title
@@ -27,7 +27,7 @@ export const createAcademicSemesterService = async (
 export const getAllSemestersService = async (
   paginationOptions: PaginationOptions,
   filterOptions: AcademicFacultyFilterOptions
-): Promise<PaginationResponse<IAcademicSemeter[]>> => {
+): Promise<PaginationResponse<IAcademicSemester[]>> => {
   const { page, limit, skip } = calculateSkip(paginationOptions);
   const { sortBy, sortOrder } = paginationOptions;
   const { search, ...filters } = filterOptions;
@@ -61,14 +61,14 @@ export const getAllSemestersService = async (
 
 export const getSemesterByIdService = async (
   semesterId: string
-): Promise<IAcademicSemeter | null> => {
+): Promise<IAcademicSemester | null> => {
   const semester = await AcademicSemester.findOne({ _id: semesterId });
   return semester;
 };
 
 export const updateSemesterService = async (
   semesterId: string,
-  payload: Partial<IAcademicSemeter>
+  payload: Partial<IAcademicSemester>
 ) => {
   const isValidTitleOrCode = await validateTitleCode(
     payload.code,

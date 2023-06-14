@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import expressAsyncHandler from "express-async-handler";
 import { StatusCodes } from "http-status-codes";
 import { paginationFields } from "../../../constants/pagination";
+import ApiError from "../../../errors/ApiError";
 import { AcademicDepartmentFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { QueryObject } from "../../../types/QueryObject";
@@ -10,7 +11,10 @@ import { sendResponse } from "../../../utils/sendResponse";
 import { IAcademicDepartment } from "./academicDepartment.interface";
 import {
   createAcademicDepartmentService,
+  deleteDepartmentService,
   getAllAcademicDepartmentService,
+  getDepartmentByIdService,
+  updateDepartmentService,
 } from "./academicDepartment.services";
 
 export const createAcademicDepartment = expressAsyncHandler(
@@ -50,6 +54,59 @@ export const getAllAcademicDepartment = expressAsyncHandler(
       success: true,
       statusCode: StatusCodes.OK,
       meta: result.meta,
+    });
+  }
+);
+
+export const getAcademicDepartmentById = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const departmentId = req.params.departmentId;
+
+    const department = await getDepartmentByIdService(departmentId);
+
+    if (!department) {
+      throw new ApiError(StatusCodes.NOT_FOUND, "Department not found");
+    }
+
+    sendResponse<IAcademicDepartment>(res, {
+      data: department,
+      success: true,
+      statusCode: StatusCodes.OK,
+    });
+  }
+);
+
+export const updateAcademicDepartment = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const departmentId = req.params.departmentId;
+    const updateData = req.body;
+
+    console.log({ departmentId, updateData });
+
+    const department = await updateDepartmentService(departmentId, updateData);
+
+    sendResponse<IAcademicDepartment>(res, {
+      data: department,
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Department updated successfully",
+    });
+  }
+);
+
+export const deleteAcademicDepartment = expressAsyncHandler(
+  async (req: Request, res: Response) => {
+    const departmentId = req.params.departmentId;
+
+    console.log(departmentId);
+
+    const result = await deleteDepartmentService(departmentId);
+
+    sendResponse(res, {
+      data: result,
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Department deleted successfully",
     });
   }
 );

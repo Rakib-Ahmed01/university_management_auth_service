@@ -1,3 +1,5 @@
+import { StatusCodes } from "http-status-codes";
+import ApiError from "../../../errors/ApiError";
 import { AcademicFacultyFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
 import { PaginationResponse } from "../../../types/PaginationResponse";
@@ -55,6 +57,10 @@ export const updateAcademicFacultyService = async (
   facultyId: string,
   payload: IAcademicFaculty
 ) => {
+  if (Object.keys(payload).length === 0) {
+    throw new ApiError(StatusCodes.BAD_REQUEST, "Missing update data");
+  }
+
   const updatedFaculty = await AcademicFaculty.findOneAndUpdate(
     { _id: facultyId },
     payload,

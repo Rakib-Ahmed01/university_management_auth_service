@@ -6,8 +6,10 @@ import { paginationFields } from "../../../constants/pagination";
 import ApiError from "../../../errors/ApiError";
 import { AcademicSemesterFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
+import { QueryObject } from "../../../types/QueryObject";
 import { pickOptions } from "../../../utils/pickOptions";
 import { sendResponse } from "../../../utils/sendResponse";
+import { IAcademicSemester } from "./academicSemester.interface";
 import {
   createAcademicSemesterService,
   deleteSemesterService,
@@ -15,13 +17,12 @@ import {
   getSemesterByIdService,
   updateSemesterService,
 } from "./academicSemester.services";
-import { IAcademicSemeter } from "./academicSemeter.interface";
 
 export const createSemester = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const semester = req.body;
     const createdSemester = await createAcademicSemesterService(semester);
-    sendResponse<IAcademicSemeter>(res, {
+    sendResponse<IAcademicSemester>(res, {
       data: createdSemester,
       success: true,
       statusCode: StatusCodes.OK,
@@ -43,7 +44,7 @@ export const getAllSemesters = expressAsyncHandler(
 
     const result = await getAllSemestersService(paginationOptions, filters);
 
-    sendResponse<IAcademicSemeter>(res, {
+    sendResponse<IAcademicSemester>(res, {
       data: result.data,
       success: true,
       statusCode: StatusCodes.OK,
@@ -62,7 +63,7 @@ export const getSemesterById = expressAsyncHandler(
       throw new ApiError(StatusCodes.NOT_FOUND, "Semester not found");
     }
 
-    sendResponse<IAcademicSemeter>(res, {
+    sendResponse<IAcademicSemester>(res, {
       data: semester,
       success: true,
       statusCode: StatusCodes.OK,
@@ -77,7 +78,7 @@ export const updateSemester = expressAsyncHandler(
 
     const semester = await updateSemesterService(semesterId, updateData);
 
-    sendResponse<IAcademicSemeter>(res, {
+    sendResponse<IAcademicSemester>(res, {
       data: semester,
       success: true,
       statusCode: StatusCodes.OK,

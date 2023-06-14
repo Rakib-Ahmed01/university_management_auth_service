@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { AcademicSemeterModel } from "../academicSemester/academicSemeter.interface";
+import { AcademicSemeterModel } from "../academicSemester/academicSemester.interface";
 import {
   AcademicFacultyModel,
   IAcademicFaculty,

@@ -5,6 +5,7 @@ import { paginationFields } from "../../../constants/pagination";
 import ApiError from "../../../errors/ApiError";
 import { AcademicFacultyFilterOptions } from "../../../types/FilterOptions";
 import { PaginationOptions } from "../../../types/PaginationOptions";
+import { QueryObject } from "../../../types/QueryObject";
 import { pickOptions } from "../../../utils/pickOptions";
 import { sendResponse } from "../../../utils/sendResponse";
 import { IAcademicFaculty } from "./academicFaculty.interface";
