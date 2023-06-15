@@ -1,5 +1,9 @@
 import { defaultUserPassword } from "../../../config";
-import { generateStudentId } from "../../../utils/generateIds";
+import {
+  generateAdminId,
+  generateFacultyId,
+  generateStudentId,
+} from "../../../utils/generateIds";
 import { IAcademicSemester } from "../academicSemester/academicSemester.interface";
 import { IUser } from "./users.interface";
 import User from "./users.model";
@@ -8,7 +12,18 @@ export const createUserService = async (user: IUser) => {
   // assign default password if password is not provided
   user.password = defaultUserPassword as string;
 
-  const id = await generateStudentId(0 as unknown as IAcademicSemester);
+  let id = "0";
+
+  if (user.role === "student") {
+    id = await generateStudentId({
+      year: "2023",
+      code: "03",
+    } as IAcademicSemester);
+  } else if (user.role === "admin") {
+    id = await generateAdminId();
+  } else if (user.role === "faculty") {
+    id = await generateFacultyId();
+  }
 
   user.id = id;
 

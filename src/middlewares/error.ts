@@ -19,7 +19,7 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     success: false,
     message: "Something went wrong!",
     errors: errors,
-    statck: process.env.NODE_ENV !== "production" ? error?.stack : null,
+    stack: process.env.NODE_ENV !== "production" ? error?.stack : null,
   };
 
   if (error?.name === "ValidationError") {

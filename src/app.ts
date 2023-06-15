@@ -2,7 +2,6 @@ import cors from "cors";
 import express, { Application } from "express";
 import globalErrorHandler, { notFoundErrorHandler } from "./middlewares/error";
 import { router } from "./routes";
-import { generateAdminId } from "./utils/generateIds";
 
 // initialize app
 const app: Application = express();
@@ -18,16 +17,6 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/", router);
-
-const academicSemester = {
-  year: "2023",
-  code: "02",
-};
-
-(async () => {
-  const id = await generateAdminId();
-  console.log(id);
-})();
 
 // error handling middleware
 app.use(notFoundErrorHandler);

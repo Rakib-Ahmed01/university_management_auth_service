@@ -11,14 +11,17 @@ const getLastUserId = async (role: string) => {
     .sort({ createdAt: -1 })
     .limit(1)
     .lean();
-  return users[0]?.id;
+
+  let id = users[0]?.id;
+  id = id ? id?.slice(4) : "";
+  return id;
 };
 
 export const generateStudentId = async (
   academicSemester: IAcademicSemester
 ) => {
   const lastUserId = await getLastUserId("student");
-  const nextId = Number(lastUserId?.slice(4)) + 1 || 1;
+  const nextId = Number(lastUserId) + 1 || 1;
   const incrementedId = String(nextId).padStart(5, "0");
   return `${academicSemester.year.slice(2)}${
     academicSemester.code
@@ -27,14 +30,14 @@ export const generateStudentId = async (
 
 export const generateFacultyId = async () => {
   const lastFacultyId = await getLastUserId("faculty");
-  const nextFacultyId = Number(lastFacultyId?.slice(4)) + 1 || 1;
+  const nextFacultyId = Number(lastFacultyId) + 1 || 1;
   const id = String(nextFacultyId).padStart(5, "0");
   return `F${id}`;
 };
 
 export const generateAdminId = async () => {
   const lastAdminId = await getLastUserId("admin");
-  const nextAdminId = Number(lastAdminId?.slice(4)) + 1 || 1;
+  const nextAdminId = Number(lastAdminId) + 1 || 1;
   const id = String(nextAdminId).padStart(5, "0");
   return `A${id}`;
 };

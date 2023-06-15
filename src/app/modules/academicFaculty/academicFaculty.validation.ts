@@ -8,7 +8,7 @@ export const createAcademicFacultyZodSchema = z.object({
       })
       .refine((val) => /^Faculty of [A-Za-z\s&]+$/.test(val), {
         message:
-          "Invalid faculty name. Facult name must be started with Faculty of ...",
+          "Invalid faculty name. Faculty name must be started with Faculty of ...",
       }),
   }),
 });
@@ -21,7 +21,7 @@ export const updateAcademicFacultyZodSchema = z.object({
       })
       .refine((val) => /^Faculty of [A-Za-z\s&]+$/.test(val), {
         message:
-          "Invalid faculty name. Facult name must be started with Faculty of ...",
+          "Invalid faculty name. Faculty name must be started with Faculty of ...",
       }),
   }),
 });
