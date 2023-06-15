@@ -48,6 +48,14 @@ const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+      getters: true,
+      transform: (doc, ret) => {
+        console.log({ doc, ret });
+        return (ret.id = ret._id);
+      },
+    },
   }
 );
 

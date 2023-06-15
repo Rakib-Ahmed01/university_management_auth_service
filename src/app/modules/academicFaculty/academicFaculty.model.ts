@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { AcademicSemeterModel } from "../academicSemester/academicSemester.interface";
+
 import {
   AcademicFacultyModel,
   IAcademicFaculty,
@@ -19,16 +19,19 @@ const academicFacultySchema = new Schema<
           return /^Faculty of [A-Za-z\s&]+$/.test(v);
         },
         message:
-          "Invalid faculty name. Facult name must be started with Faculty of ...",
+          "Invalid faculty name. Faculty name must be started with Faculty of ...",
       },
     },
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
 );
 
-export const AcademicFaculty = model<IAcademicFaculty, AcademicSemeterModel>(
+export const AcademicFaculty = model<IAcademicFaculty, AcademicFacultyModel>(
   "AcademicFaculty",
   academicFacultySchema
 );

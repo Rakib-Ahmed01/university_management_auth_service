@@ -1,15 +1,14 @@
 import { defaultUserPassword } from "../../../config";
+import { generateStudentId } from "../../../utils/generateIds";
+import { IAcademicSemester } from "../academicSemester/academicSemester.interface";
 import { IUser } from "./users.interface";
 import User from "./users.model";
-import { generateUserId } from "./users.utils";
 
 export const createUserService = async (user: IUser) => {
   // assign default password if password is not provided
-  if (!user?.password && user.role === "student") {
-    user.password = defaultUserPassword as string;
-  }
+  user.password = defaultUserPassword as string;
 
-  const id = await generateUserId();
+  const id = await generateStudentId(0 as unknown as IAcademicSemester);
 
   user.id = id;
 
