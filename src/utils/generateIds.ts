@@ -1,26 +1,40 @@
 import { IAcademicSemester } from "../app/modules/academicSemester/academicSemester.interface";
 import User from "../app/modules/users/users.model";
 
-const getLastStudentId = async () => {
-  const lastUser = await User.find(
+const getLastUserId = async (role: string) => {
+  const users = await User.find(
     {
-      role: "student",
+      role,
     },
     { _id: 0, id: 1 }
   )
     .sort({ createdAt: -1 })
     .limit(1)
     .lean();
-  return lastUser[0]?.id;
+  return users[0]?.id;
 };
 
 export const generateStudentId = async (
   academicSemester: IAcademicSemester
 ) => {
-  const lastUserId = await getLastStudentId();
-  const nextId = Number(lastUserId) + 1 || 1;
-  const incrementedId = nextId.toString().padStart(5, "0");
+  const lastUserId = await getLastUserId("student");
+  const nextId = Number(lastUserId?.slice(4)) + 1 || 1;
+  const incrementedId = String(nextId).padStart(5, "0");
   return `${academicSemester.year.slice(2)}${
     academicSemester.code
   }${incrementedId}`;
+};
+
+export const generateFacultyId = async () => {
+  const lastFacultyId = await getLastUserId("faculty");
+  const nextFacultyId = Number(lastFacultyId?.slice(4)) + 1 || 1;
+  const id = String(nextFacultyId).padStart(5, "0");
+  return `F${id}`;
+};
+
+export const generateAdminId = async () => {
+  const lastAdminId = await getLastUserId("admin");
+  const nextAdminId = Number(lastAdminId?.slice(4)) + 1 || 1;
+  const id = String(nextAdminId).padStart(5, "0");
+  return `A${id}`;
 };
