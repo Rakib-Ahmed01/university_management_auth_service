@@ -39,6 +39,26 @@
             "date": 1687244400291,
             "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\success\\auth-2023-20-06-00-success.log",
             "hash": "c91953268fb086212fd012f6bb402c23cd62b8fc0f534bdf5991f4e949d6578e"
+        },
+        {
+            "date": 1687252382320,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\success\\auth-2023-20-06-02-success.log",
+            "hash": "fd734eed3abc025ce8d25f512b8d5cc10ec73fd6578b95f9ddea3068beb12267"
+        },
+        {
+            "date": 1687255215043,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\success\\auth-2023-20-06-03-success.log",
+            "hash": "5cb289fb3c89746ed0aa54f0e5dfbbc8040a3949257d3ae1225b909eeacae5ab"
+        },
+        {
+            "date": 1687259216494,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\success\\auth-2023-20-06-04-success.log",
+            "hash": "73ca1062b4182e5c5c76204d6a5779cfde53f770b68ce4bbb5d16991fde46c76"
+        },
+        {
+            "date": 1687259886542,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\success\\auth-2023-20-06-17-success.log",
+            "hash": "b6e52fbb031679ec75324fd29c1fc5d9a5597db5fce032d53e03f940d4e89a5c"
         }
     ],
     "hashType": "sha256"

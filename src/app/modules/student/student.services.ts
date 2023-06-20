@@ -103,3 +103,39 @@ export const getStudentByIdService = async (studentId: string) => {
 
   return student;
 };
+
+export const updateStudentService = async (
+  studentId: string,
+  payload: Partial<IStudent>
+) => {
+  const isExist = await Student.findOne({ _id: studentId });
+
+  if (!isExist) {
+    throwApiError(StatusCodes.NOT_FOUND, 'Student not found');
+  }
+
+  const updateData = {} as Record<string, unknown>;
+
+  for (const [key, value] of Object.entries(payload)) {
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      for (const [key2, value2] of Object.entries(value)) {
+        updateData[`${key}.${key2}`] = value2;
+      }
+    } else {
+      updateData[key] = value;
+    }
+  }
+
+  const updatedStudent = await Student.findOneAndUpdate(
+    { _id: studentId },
+    { $set: updateData },
+    { new: true, runValidators: true }
+  );
+
+  return updatedStudent;
+};
+
+export const deleteStudentService = async (studentId: string) => {
+  const result = await Student.deleteOne({ _id: studentId });
+  return result;
+};

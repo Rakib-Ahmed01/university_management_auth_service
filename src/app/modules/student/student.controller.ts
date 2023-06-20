@@ -4,8 +4,10 @@ import { sendResponse } from '../../../utils/sendResponse';
 import { IStudent } from './student.interface';
 import {
   createStudentService,
+  deleteStudentService,
   getAllStudentsService,
   getStudentByIdService,
+  updateStudentService,
 } from './student.services';
 
 export const createStudent = expressAsyncHandler(async (req, res) => {
@@ -41,5 +43,32 @@ export const getStudentById = expressAsyncHandler(async (req, res) => {
     message: 'Student retrieved successfully',
     statusCode: StatusCodes.OK,
     success: true,
+  });
+});
+
+export const updateStudent = expressAsyncHandler(async (req, res) => {
+  const studentId = req.params.studentId;
+  const { student: updateData } = req.body;
+
+  const student = await updateStudentService(studentId, updateData);
+
+  sendResponse<IStudent>(res, {
+    data: student,
+    success: true,
+    statusCode: StatusCodes.OK,
+    message: 'Student updated successfully',
+  });
+});
+
+export const deleteStudent = expressAsyncHandler(async (req, res) => {
+  const { studentId } = req.params;
+
+  const result = await deleteStudentService(studentId);
+
+  sendResponse(res, {
+    data: result,
+    success: true,
+    statusCode: StatusCodes.OK,
+    message: 'Student deleted successfully',
   });
 });

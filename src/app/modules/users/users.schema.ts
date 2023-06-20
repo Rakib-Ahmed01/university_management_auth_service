@@ -41,7 +41,7 @@ export const userBaseSchema = new Schema({
     required: [true, '`{PATH}` is required'],
     messages: {
       enum: `Invalid blood group specified. Only ${bloodGroups.join(
-        ' , '
+        ','
       )} are allowed.`,
     },
   },
