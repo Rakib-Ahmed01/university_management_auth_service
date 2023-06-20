@@ -1,8 +1,8 @@
-import express, { Router } from "express";
-import { academicDepartmentRouter } from "../app/modules/academicDepartment/academicDepartment.route";
-import { academicFacultyRouter } from "../app/modules/academicFaculty/academicFaculty.route";
-import academicSemesterRouter from "../app/modules/academicSemester/academicSemester.route";
-import userRouter from "../app/modules/users/users.route";
+import express, { Router } from 'express';
+import { academicDepartmentRouter } from '../app/modules/academicDepartment/academicDepartment.route';
+import { academicFacultyRouter } from '../app/modules/academicFaculty/academicFaculty.route';
+import academicSemesterRouter from '../app/modules/academicSemester/academicSemester.route';
+import { studentRouter } from '../app/modules/student/student.route';
 
 export const router = express.Router();
 
@@ -13,19 +13,19 @@ type Route = {
 
 const routes: Route[] = [
   {
-    path: "/api/v1/users",
-    router: userRouter,
+    path: '/api/v1/students',
+    router: studentRouter,
   },
   {
-    path: "/api/v1/semesters",
+    path: '/api/v1/semesters',
     router: academicSemesterRouter,
   },
   {
-    path: "/api/v1/academic-faculties",
+    path: '/api/v1/academic-faculties',
     router: academicFacultyRouter,
   },
   {
-    path: "/api/v1/academic-departments",
+    path: '/api/v1/academic-departments',
     router: academicDepartmentRouter,
   },
 ];

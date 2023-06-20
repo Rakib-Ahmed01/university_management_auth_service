@@ -1,15 +1,15 @@
-import { StatusCodes } from "http-status-codes";
-import { FilterQuery, Schema, Types, UpdateQuery, model } from "mongoose";
-import ApiError from "../../../errors/ApiError";
+import { StatusCodes } from 'http-status-codes';
+import { FilterQuery, Schema, Types, UpdateQuery, model } from 'mongoose';
+import ApiError from '../../../errors/ApiError';
 import {
   academicSemesterCodes,
   academicSemesterMonths,
   academicSemesterTitles,
-} from "./academicSemester.constants";
+} from './academicSemester.constants';
 import {
   AcademicSemesterModel,
   IAcademicSemester,
-} from "./academicSemester.interface";
+} from './academicSemester.interface';
 
 const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
   {
@@ -18,7 +18,7 @@ const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
       required: true,
       enum: {
         values: academicSemesterTitles,
-        message: `title must be - ${academicSemesterTitles.join(", ")}`,
+        message: `title must be - ${academicSemesterTitles.join(', ')}`,
       },
     },
     year: {
@@ -30,19 +30,19 @@ const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
       required: true,
       enum: {
         values: academicSemesterCodes,
-        message: `code must be - ${academicSemesterCodes.join(", ")}`,
+        message: `code must be - ${academicSemesterCodes.join(', ')}`,
       },
     },
     startMonth: {
       type: String,
       enum: academicSemesterMonths,
-      message: `start month must be - ${academicSemesterMonths.join(", ")}`,
+      message: `start month must be - ${academicSemesterMonths.join(', ')}`,
       required: true,
     },
     endMonth: {
       type: String,
       enum: academicSemesterMonths,
-      message: `end month must be - ${academicSemesterMonths.join(", ")}`,
+      message: `end month must be - ${academicSemesterMonths.join(', ')}`,
       required: true,
     },
   },
@@ -50,29 +50,24 @@ const academicSemester = new Schema<IAcademicSemester, AcademicSemesterModel>(
     timestamps: true,
     toJSON: {
       virtuals: true,
-      getters: true,
-      transform: (doc, ret) => {
-        console.log({ doc, ret });
-        return (ret.id = ret._id);
-      },
     },
   }
 );
 
-academicSemester.pre("save", async function (next) {
+academicSemester.pre('save', async function (next) {
   const doesExist = await AcademicSemester.findOne({
     year: this.year,
     title: this.title,
   });
 
   if (doesExist) {
-    next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
+    next(new ApiError(StatusCodes.CONFLICT, 'Semester already exists'));
   }
 
   next();
 });
 
-academicSemester.pre("findOneAndUpdate", async function (next) {
+academicSemester.pre('findOneAndUpdate', async function (next) {
   const filters = this.getFilter() as FilterQuery<
     Partial<{ _id: Types.ObjectId }>
   >;
@@ -83,7 +78,7 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
     Partial<IAcademicSemester>;
 
   if (!updateData) {
-    return next(new ApiError(StatusCodes.BAD_REQUEST, "Missing update data"));
+    return next(new ApiError(StatusCodes.BAD_REQUEST, 'Missing update data'));
   }
 
   const docToUpdate = await AcademicSemester.findOne({
@@ -97,14 +92,14 @@ academicSemester.pre("findOneAndUpdate", async function (next) {
   });
 
   if (doesExist) {
-    return next(new ApiError(StatusCodes.CONFLICT, "Semester already exists"));
+    return next(new ApiError(StatusCodes.CONFLICT, 'Semester already exists'));
   }
 
   next();
 });
 
 const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
-  "AcademicSemester",
+  'AcademicSemester',
   academicSemester
 );
 

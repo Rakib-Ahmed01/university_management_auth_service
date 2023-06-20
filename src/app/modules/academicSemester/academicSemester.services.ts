@@ -1,16 +1,16 @@
-import ApiError from "../../../errors/ApiError";
-import { AcademicFacultyFilterOptions } from "../../../types/FilterOptions";
-import { PaginationOptions } from "../../../types/PaginationOptions";
-import { PaginationResponse } from "../../../types/PaginationResponse";
-import { generateSearchCondition } from "../../../utils/generateSearchCondition";
-import { validateTitleCode } from "../../../utils/validateTitleCode";
-import { calculateSkip } from "./../../../utils/calculateSkip";
-import { IAcademicSemester } from "./academicSemester.interface";
-import AcademicSemester from "./academicSemester.model";
+import ApiError from '../../../errors/ApiError';
+import { AcademicFacultyFilterOptions } from '../../../types/FilterOptions';
+import { PaginationOptions } from '../../../types/PaginationOptions';
+import { PaginationResponse } from '../../../types/PaginationResponse';
+import { generateSearchCondition } from '../../../utils/generateSearchCondition';
+import { validateTitleCode } from '../../../utils/validateTitleCode';
+import { calculateSkip } from './../../../utils/calculateSkip';
+import { IAcademicSemester } from './academicSemester.interface';
+import AcademicSemester from './academicSemester.model';
 
 export const createAcademicSemesterService = async (
   semester: IAcademicSemester
-): Promise<IAcademicSemester> => {
+) => {
   const isValidTitleOrCode = await validateTitleCode(
     semester.code,
     semester.title
@@ -32,10 +32,10 @@ export const getAllSemestersService = async (
   const { sortBy, sortOrder } = paginationOptions;
   const { search, ...filters } = filterOptions;
 
-  const searchCondition = generateSearchCondition("or", search, [
-    "title",
-    "code",
-    "year",
+  const searchCondition = generateSearchCondition('or', search, [
+    'title',
+    'code',
+    'year',
   ]);
 
   const [semesters, total] = await Promise.all([

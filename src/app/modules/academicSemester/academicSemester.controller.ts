@@ -1,31 +1,40 @@
-import { Request, Response } from "express";
-import expressAsyncHandler from "express-async-handler";
-import { StatusCodes } from "http-status-codes";
-import { filterFields } from "../../../constants/filters";
-import { paginationFields } from "../../../constants/pagination";
-import ApiError from "../../../errors/ApiError";
-import { AcademicSemesterFilterOptions } from "../../../types/FilterOptions";
-import { PaginationOptions } from "../../../types/PaginationOptions";
-import { QueryObject } from "../../../types/QueryObject";
-import { pickOptions } from "../../../utils/pickOptions";
-import { sendResponse } from "../../../utils/sendResponse";
-import { IAcademicSemester } from "./academicSemester.interface";
+import { Request, Response } from 'express';
+import expressAsyncHandler from 'express-async-handler';
+import { StatusCodes } from 'http-status-codes';
+import { filterFields } from '../../../constants/filters';
+import { paginationFields } from '../../../constants/pagination';
+import ApiError from '../../../errors/ApiError';
+import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
+import { PaginationOptions } from '../../../types/PaginationOptions';
+import { QueryObject } from '../../../types/QueryObject';
+import { pickOptions } from '../../../utils/pickOptions';
+import { sendResponse } from '../../../utils/sendResponse';
+import { IAcademicSemester } from './academicSemester.interface';
 import {
   createAcademicSemesterService,
   deleteSemesterService,
   getAllSemestersService,
   getSemesterByIdService,
   updateSemesterService,
-} from "./academicSemester.services";
+} from './academicSemester.services';
 
 export const createSemester = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const semester = req.body;
     const createdSemester = await createAcademicSemesterService(semester);
+
+    console.log({
+      data: createdSemester,
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: 'Semester created successfully',
+    });
+
     sendResponse<IAcademicSemester>(res, {
       data: createdSemester,
       success: true,
       statusCode: StatusCodes.OK,
+      message: 'Semester created successfully',
     });
   }
 );
@@ -60,7 +69,7 @@ export const getSemesterById = expressAsyncHandler(
     const semester = await getSemesterByIdService(semesterId);
 
     if (!semester) {
-      throw new ApiError(StatusCodes.NOT_FOUND, "Semester not found");
+      throw new ApiError(StatusCodes.NOT_FOUND, 'Semester not found');
     }
 
     sendResponse<IAcademicSemester>(res, {
@@ -82,7 +91,7 @@ export const updateSemester = expressAsyncHandler(
       data: semester,
       success: true,
       statusCode: StatusCodes.OK,
-      message: "Semester updated successfully",
+      message: 'Semester updated successfully',
     });
   }
 );
@@ -97,7 +106,7 @@ export const deleteSemester = expressAsyncHandler(
       data: result,
       success: true,
       statusCode: StatusCodes.OK,
-      message: "Semester deleted successfully",
+      message: 'Semester deleted successfully',
     });
   }
 );

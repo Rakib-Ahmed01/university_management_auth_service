@@ -1,12 +1,16 @@
-import { Model } from "mongoose";
-import { BloodGroup, Gender, Name } from "../../../types/user";
+import { Model } from 'mongoose';
+import { IObjectId } from '../../../types/ObjectId';
+import { BloodGroup, Gender, Name } from '../../../types/user';
 
-export type UserRole = "super_admin" | "admin" | "student" | "faculty";
+export type UserRole = 'super_admin' | 'admin' | 'student' | 'faculty';
 
 export type IUser = {
   id: string;
   role: UserRole;
   password: string;
+  student?: IObjectId;
+  admin?: IObjectId;
+  faculty?: IObjectId;
 };
 
 export interface UserBaseSchema {

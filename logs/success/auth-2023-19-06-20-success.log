@@ -1,0 +1,80 @@
+Mon Jun 19 2023 20:1:19 [auth-service] info: Connected to database: 127.0.0.1
+Mon Jun 19 2023 20:1:19 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:4:56 [auth-service] info: Connected to database: 127.0.0.1
+Mon Jun 19 2023 20:4:56 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:5:57 [auth-service] info: Connected to database: 127.0.0.1
+Mon Jun 19 2023 20:5:57 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:6:8 [auth-service] info: Connected to database: 127.0.0.1
+Mon Jun 19 2023 20:6:8 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:6:33 [auth-service] info: Connected to database: 127.0.0.1
+Mon Jun 19 2023 20:6:33 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:12:33 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:12:33 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:16:13 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:16:13 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:17:23 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:17:23 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:17:50 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:17:50 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:19:0 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:19:0 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:21:6 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:21:6 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:21:16 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:21:16 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:22:59 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:22:59 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:23:26 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:23:26 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:23:46 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:23:46 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:25:46 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:25:46 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:27:36 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:27:36 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:28:29 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:28:29 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:29:22 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:29:22 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:29:47 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:29:47 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:32:11 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:32:11 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:32:43 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:32:43 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:32:48 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:32:48 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:33:28 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:33:28 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:34:29 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:34:29 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:34:31 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:34:31 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:34:54 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:34:54 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:34:56 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:34:56 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:35:59 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:35:59 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:36:25 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:36:25 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:37:57 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:37:57 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:39:8 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:39:8 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:39:56 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:39:56 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:40:16 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:40:16 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:40:20 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:40:20 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:42:23 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:42:23 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:42:35 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:42:35 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:43:7 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:43:7 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:43:27 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:43:27 [auth-service] info: Auth service listening on port 5000
+Mon Jun 19 2023 20:43:38 [auth-service] info: Connected to database: ac-qeqbvl9-shard-00-00.ht2ef7a.mongodb.net
+Mon Jun 19 2023 20:43:38 [auth-service] info: Auth service listening on port 5000

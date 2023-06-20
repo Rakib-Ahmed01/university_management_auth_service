@@ -1,0 +1,1 @@
+Mon Jun 19 2023 14:14:15 [auth-service] error: Failed to connect to database: connect ECONNREFUSED ::1:27017

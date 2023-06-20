@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint-format": "yarn lint && yarn format"
@@ -36,6 +38,7 @@
     "express-async-handler": "^1.2.0",
     "http-status-codes": "^2.2.0",
     "mongoose": "^7.2.1",
+    "ts-node-dev": "^2.0.0",
     "winston": "^3.9.0",
     "zod": "^3.21.4"
   }

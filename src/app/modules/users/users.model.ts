@@ -1,29 +1,24 @@
-import { Schema, model } from "mongoose";
-import { defaultUserPassword } from "../../../config";
-import { IUser, UserModel } from "./users.interface";
+import { Schema, model } from 'mongoose';
+import { userRoles } from './users.constants';
+import { IUser, UserModel } from './users.interface';
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema(
   {
-    id: {
-      type: String,
-      unique: true,
-      required: true,
-    },
+    id: { type: String, required: [true, '`{PATH}` is required'] },
     role: {
       type: String,
       enum: {
-        values: ["admin", "student", "faculty"],
-        message:
-          "Invalid role specified. Allowed roles are admin, student, and faculty.",
+        values: userRoles,
+        message: `Invalid gender specified. Only ${userRoles.join(
+          ' , '
+        )} are allowed.`,
       },
-      required: true,
+      required: [true, '`{PATH}` is required'],
     },
-    password: {
-      type: String,
-      required: true,
-      default: defaultUserPassword,
-      min: [6, "Password must be at least 6 characters long."],
-    },
+    password: { type: String, required: [true, '`{PATH}` is required'] },
+    student: { type: Schema.Types.ObjectId, ref: 'Student' },
+    admin: { type: Schema.Types.ObjectId, ref: 'Admin' },
+    faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
   },
   {
     timestamps: true,
@@ -33,6 +28,6 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-const User = model<IUser, UserModel>("User", userSchema);
+const User = model<IUser, UserModel>('User', userSchema);
 
 export default User;
