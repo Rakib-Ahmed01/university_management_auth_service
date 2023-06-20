@@ -91,7 +91,7 @@ export const userBaseZodSchema = z.object({
   bloodGroup: z.enum(bloodGroups, {
     required_error: 'Blood Group is required',
     invalid_type_error: `Invalid blood group specified. Only ${bloodGroups.join(
-      ' , '
+      ', '
     )} are allowed.`,
   }),
 });

@@ -136,6 +136,24 @@ export const updateStudentService = async (
 };
 
 export const deleteStudentService = async (studentId: string) => {
-  const result = await Student.deleteOne({ _id: studentId });
+  const session = await startSession();
+
+  let result = {};
+
+  try {
+    session.startTransaction();
+
+    [result] = await Promise.all([
+      Student.deleteOne({ _id: studentId }).session(session),
+      User.deleteOne({ student: studentId }).session(session),
+    ]);
+
+    await session.commitTransaction();
+    await session.endSession();
+  } catch (error) {
+    await session.abortTransaction();
+    await session.endSession();
+  }
+
   return result;
 };
