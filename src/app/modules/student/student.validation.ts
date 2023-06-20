@@ -138,3 +138,5 @@ export const createStudentZodchema = z.object({
     ),
   }),
 });
+
+export const updateStudentZodchema = createStudentZodchema.deepPartial();

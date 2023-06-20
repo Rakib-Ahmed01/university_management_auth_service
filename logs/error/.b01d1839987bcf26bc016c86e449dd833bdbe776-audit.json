@@ -34,6 +34,11 @@
             "date": 1687242806023,
             "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-19-06-23-error.log",
             "hash": "271460c22f6e17bf3837d3d28bbd141db66e202fb3bbbfb869c2a34c9ddb8673"
+        },
+        {
+            "date": 1687244400302,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-20-06-00-error.log",
+            "hash": "773647ee5b24f2cf332908aa42ceb9c65715af25bde685a00668378d6ae63e4f"
         }
     ],
     "hashType": "sha256"

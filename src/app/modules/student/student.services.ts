@@ -91,7 +91,15 @@ export const getStudentByIdService = async (studentId: string) => {
   if (!isValidObjectId(studentId)) {
     throwApiError(StatusCodes.NOT_FOUND, 'Student not found');
   }
-  const student = await Student.findOne({ _id: studentId });
+  const student = await Student.findOne({ _id: studentId })
+    .populate('academicSemester')
+    .populate('academicFaculty')
+    .populate({
+      path: 'academicDepartment',
+      populate: {
+        path: 'academicFaculty',
+      },
+    });
 
   return student;
 };
