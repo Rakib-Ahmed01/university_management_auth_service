@@ -1,13 +1,17 @@
 import express from 'express';
 import { validateRequest } from '../../../middlewares/validateRequest';
-import { createStudent } from './student.controller';
+import {
+  createStudent,
+  getAllStudents,
+  getStudentById,
+} from './student.controller';
 import { createStudentZodchema } from './student.validation';
 
 export const studentRouter = express.Router();
 
-studentRouter.route(':/studentId').get().patch().delete();
+studentRouter.route('/:studentId').get(getStudentById).patch().delete();
 
 studentRouter
   .route('/')
-  .get()
+  .get(getAllStudents)
   .post(validateRequest(createStudentZodchema), createStudent);

@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import { startSession } from 'mongoose';
+import { isValidObjectId, startSession } from 'mongoose';
 import { defaultUserPassword } from '../../../config';
 import { IObjectId } from '../../../types/ObjectId';
 import { generateStudentId } from '../../../utils/generateIds';
@@ -71,8 +71,6 @@ export const createStudentService = async (
       })
       .session(session);
 
-    console.log({ createdStudent, newStudent, _id: createdStudent[0]._id });
-
     await session.commitTransaction();
     await session.endSession();
   } catch (error) {
@@ -82,4 +80,18 @@ export const createStudentService = async (
   }
 
   return newStudent;
+};
+
+export const getAllStudentsService = async () => {
+  const students = await Student.find();
+  return students;
+};
+
+export const getStudentByIdService = async (studentId: string) => {
+  if (!isValidObjectId(studentId)) {
+    throwApiError(StatusCodes.NOT_FOUND, 'Student not found');
+  }
+  const student = await Student.findOne({ _id: studentId });
+
+  return student;
 };

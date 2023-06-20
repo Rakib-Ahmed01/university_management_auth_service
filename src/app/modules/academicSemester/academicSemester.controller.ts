@@ -23,13 +23,6 @@ export const createSemester = expressAsyncHandler(
     const semester = req.body;
     const createdSemester = await createAcademicSemesterService(semester);
 
-    console.log({
-      data: createdSemester,
-      success: true,
-      statusCode: StatusCodes.OK,
-      message: 'Semester created successfully',
-    });
-
     sendResponse<IAcademicSemester>(res, {
       data: createdSemester,
       success: true,
