@@ -1,1 +1,1 @@
-export const filterFields = ["search", "year", "code", "title"];
+export const filterFields = ['search', 'year', 'code', 'title'];

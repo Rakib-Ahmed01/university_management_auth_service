@@ -1,5 +1,5 @@
 import ApiError from '../../../errors/ApiError';
-import { AcademicFacultyFilterOptions } from '../../../types/FilterOptions';
+import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
 import { PaginationOptions } from '../../../types/PaginationOptions';
 import { PaginationResponse } from '../../../types/PaginationResponse';
 import { generateSearchCondition } from '../../../utils/generateSearchCondition';
@@ -26,7 +26,7 @@ export const createAcademicSemesterService = async (
 
 export const getAllSemestersService = async (
   paginationOptions: PaginationOptions,
-  filterOptions: AcademicFacultyFilterOptions
+  filterOptions: AcademicSemesterFilterOptions
 ): Promise<PaginationResponse<IAcademicSemester[]>> => {
   const { page, limit, skip } = calculateSkip(paginationOptions);
   const { sortBy, sortOrder } = paginationOptions;
