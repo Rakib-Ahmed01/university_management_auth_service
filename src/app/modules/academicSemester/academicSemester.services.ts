@@ -1,6 +1,7 @@
 import ApiError from '../../../errors/ApiError';
 import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
 import { QueryObject } from '../../../types/QueryObject';
+import { getDataById } from '../../../utils/getDataById';
 import { paginate } from '../../../utils/paginate';
 import { validateTitleCode } from '../../../utils/validateTitleCode';
 import {
@@ -32,9 +33,7 @@ export const getAllSemestersService = async (queryObject: QueryObject) => {
     AcademicSemesterFilterOptions
   >({
     queryObject,
-    filterFields: ['code', 'search', 'title', 'year'],
     model: AcademicSemester,
-    searchFields: ['title', 'code', 'year'],
     filterOptions: ['code', 'search', 'title', 'year'],
   });
   return result;
@@ -43,8 +42,8 @@ export const getAllSemestersService = async (queryObject: QueryObject) => {
 export const getSemesterByIdService = async (
   semesterId: string
 ): Promise<IAcademicSemester | null> => {
-  const semester = await AcademicSemester.findOne({ _id: semesterId });
-  return semester;
+  const result = await getDataById(semesterId, AcademicSemester, 'Semester');
+  return result;
 };
 
 export const updateSemesterService = async (

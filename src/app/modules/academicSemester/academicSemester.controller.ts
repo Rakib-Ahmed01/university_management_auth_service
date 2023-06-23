@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import { StatusCodes } from 'http-status-codes';
-import ApiError from '../../../errors/ApiError';
 import { sendResponse } from '../../../utils/sendResponse';
 import { IAcademicSemester } from './academicSemester.interface';
 import {
@@ -44,10 +43,6 @@ export const getSemesterById = expressAsyncHandler(
     const semesterId = req.params.semesterId;
 
     const semester = await getSemesterByIdService(semesterId);
-
-    if (!semester) {
-      throw new ApiError(StatusCodes.NOT_FOUND, 'Semester not found');
-    }
 
     sendResponse<IAcademicSemester>(res, {
       data: semester,

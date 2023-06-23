@@ -54,8 +54,6 @@ export const getAllAcademicFacultyService = async (
     { title: string; search: string }
   >({
     queryObject,
-    searchFields: ['title'],
-    filterFields: ['title'],
     filterOptions: ['title', 'search'],
     model: AcademicFaculty,
   });
