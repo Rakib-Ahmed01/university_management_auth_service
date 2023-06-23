@@ -1,7 +1,7 @@
-import { StatusCodes } from 'http-status-codes';
-import ApiError from '../../../errors/ApiError';
 import { QueryObject } from '../../../types/QueryObject';
+import { deleteDataById } from '../../../utils/deleteDataById';
 import { paginate } from '../../../utils/paginate';
+import { updateData } from '../../../utils/updateData';
 import {
   AcademicFacultyModel,
   IAcademicFaculty,
@@ -71,21 +71,22 @@ export const updateAcademicFacultyService = async (
   facultyId: string,
   payload: IAcademicFaculty
 ) => {
-  if (Object.keys(payload).length === 0) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, 'Missing update data');
-  }
-
-  const updatedFaculty = await AcademicFaculty.findOneAndUpdate(
-    { _id: facultyId },
-    payload,
-    { new: true }
+  const updatedFaculty = await updateData(
+    facultyId,
+    AcademicFaculty,
+    'Faculty',
+    payload
   );
 
   return updatedFaculty;
 };
 
 export const deleteAcademicFacultyService = async (facultyId: string) => {
-  const result = await AcademicFaculty.deleteOne({ _id: facultyId });
+  const result = await deleteDataById(
+    facultyId,
+    AcademicFaculty,
+    'Academic Faculty'
+  );
 
   return result;
 };
