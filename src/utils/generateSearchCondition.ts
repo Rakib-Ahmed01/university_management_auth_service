@@ -8,7 +8,7 @@ export const generateSearchCondition = (
       [`$${operator}`]: fields.map((field) => ({
         [field]: {
           $regex: search,
-          $options: "i",
+          $options: 'i',
         },
       })),
     };

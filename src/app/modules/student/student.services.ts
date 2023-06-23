@@ -2,13 +2,15 @@ import { StatusCodes } from 'http-status-codes';
 import { isValidObjectId, startSession } from 'mongoose';
 import { defaultUserPassword } from '../../../config';
 import { IObjectId } from '../../../types/ObjectId';
+import { QueryObject } from '../../../types/QueryObject';
 import { generateStudentId } from '../../../utils/generateIds';
+import { paginate } from '../../../utils/paginate';
 import { throwApiError } from '../../../utils/throwApiError';
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
 import AcademicSemester from '../academicSemester/academicSemester.model';
 import { IUser } from '../users/users.interface';
 import User from '../users/users.model';
-import { IStudent } from './student.interface';
+import { IStudent, StudentModel } from './student.interface';
 import { Student } from './student.model';
 
 export const createStudentService = async (
@@ -82,9 +84,17 @@ export const createStudentService = async (
   return newStudent;
 };
 
-export const getAllStudentsService = async () => {
-  const students = await Student.find();
-  return students;
+export const getAllStudentsService = async (queryObject: QueryObject) => {
+  const result = await paginate<
+    StudentModel,
+    IStudent,
+    { name: string; id: string }
+  >({
+    filterOptions: ['id', 'name'],
+    model: Student,
+    queryObject,
+  });
+  return result;
 };
 
 export const getStudentByIdService = async (studentId: string) => {
@@ -157,48 +167,3 @@ export const deleteStudentService = async (studentId: string) => {
 
   return result;
 };
-
-// Reusable pagination function
-// async function paginate(model, query, options) {
-//   const {
-//     page = 1,
-//     limit = 10,
-//     sort,
-//     populate,
-//     select
-//   } = options;
-
-//   const countPromise = model.countDocuments(query);
-//   const findPromise = model.find(query)
-//     .sort(sort)
-//     .skip((page - 1) * limit)
-//     .limit(limit)
-//     .populate(populate)
-//     .select(select);
-
-//   const [totalItems, items] = await Promise.all([countPromise, findPromise]);
-
-//   const totalPages = Math.ceil(totalItems / limit);
-
-//   return {
-//     items,
-//     page,
-//     limit,
-//     totalItems,
-//     totalPages
-//   };
-// }
-
-// // Usage example
-// const query = { category: 'books' };
-// const options = {
-//   page: 2,
-//   limit: 20,
-//   sort: { title: 1 },
-//   populate: 'author',
-//   select: 'title author'
-// };
-
-// const result = await paginate(Book, query, options);
-
-// console.log(result);

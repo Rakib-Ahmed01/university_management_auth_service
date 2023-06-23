@@ -23,13 +23,14 @@ export const createStudent = expressAsyncHandler(async (req, res) => {
 });
 
 export const getAllStudents = expressAsyncHandler(async (req, res) => {
-  const students = await getAllStudentsService();
+  const result = await getAllStudentsService(req.query);
 
   sendResponse<IStudent>(res, {
-    data: students,
+    data: result.data,
     message: 'Students retrieved successfully',
     statusCode: StatusCodes.OK,
     success: true,
+    meta: result.meta,
   });
 });
 

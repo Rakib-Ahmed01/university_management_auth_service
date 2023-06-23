@@ -13,12 +13,12 @@ type PaginationParams<M, F> = {
 
 export const paginate = async <
   M extends typeof Model,
-  I extends Record<string, unknown>,
+  I,
   F extends Record<string, string>
 >(
   params: PaginationParams<M, F>
 ): Promise<{
-  meta: { page: number; limit: number; total: number };
+  meta: { page: number; limit: number; total: number; totalPages: number };
   data: I[] | I | null;
 }> => {
   const { filterOptions, queryObject, model } = params;
@@ -61,6 +61,7 @@ export const paginate = async <
       page,
       limit,
       total,
+      totalPages: Math.ceil(total / limit),
     },
     data: semesters,
   };
