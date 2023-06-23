@@ -1,0 +1,2 @@
+Thu Jun 22 2023 23:40:16 [auth-service] error: Failed to connect to database: Unable to parse 127:0:0:27017 with URL
+Thu Jun 22 2023 23:40:37 [auth-service] error: Failed to connect to database: Unable to parse 127:0:0 with URL
