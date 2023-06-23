@@ -157,3 +157,48 @@ export const deleteStudentService = async (studentId: string) => {
 
   return result;
 };
+
+// Reusable pagination function
+// async function paginate(model, query, options) {
+//   const {
+//     page = 1,
+//     limit = 10,
+//     sort,
+//     populate,
+//     select
+//   } = options;
+
+//   const countPromise = model.countDocuments(query);
+//   const findPromise = model.find(query)
+//     .sort(sort)
+//     .skip((page - 1) * limit)
+//     .limit(limit)
+//     .populate(populate)
+//     .select(select);
+
+//   const [totalItems, items] = await Promise.all([countPromise, findPromise]);
+
+//   const totalPages = Math.ceil(totalItems / limit);
+
+//   return {
+//     items,
+//     page,
+//     limit,
+//     totalItems,
+//     totalPages
+//   };
+// }
+
+// // Usage example
+// const query = { category: 'books' };
+// const options = {
+//   page: 2,
+//   limit: 20,
+//   sort: { title: 1 },
+//   populate: 'author',
+//   select: 'title author'
+// };
+
+// const result = await paginate(Book, query, options);
+
+// console.log(result);

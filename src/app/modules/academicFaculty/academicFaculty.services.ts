@@ -1,13 +1,12 @@
-import { StatusCodes } from "http-status-codes";
-import ApiError from "../../../errors/ApiError";
-import { AcademicFacultyFilterOptions } from "../../../types/FilterOptions";
-import { PaginationOptions } from "../../../types/PaginationOptions";
-import { PaginationResponse } from "../../../types/PaginationResponse";
-import { calculateSkip } from "../../../utils/calculateSkip";
-import { generateSearchCondition } from "../../../utils/generateSearchCondition";
-import { handleSortByAndSortOrder } from "../../../utils/handleSortByAndSortOrder";
-import { IAcademicFaculty } from "./academicFaculty.interface";
-import { AcademicFaculty } from "./academicFaculty.model";
+import { StatusCodes } from 'http-status-codes';
+import ApiError from '../../../errors/ApiError';
+import { QueryObject } from '../../../types/QueryObject';
+import { paginate } from '../../../utils/paginate';
+import {
+  AcademicFacultyModel,
+  IAcademicFaculty,
+} from './academicFaculty.interface';
+import { AcademicFaculty } from './academicFaculty.model';
 
 export const createAcademicFacultyService = async (
   payload: IAcademicFaculty
@@ -16,34 +15,51 @@ export const createAcademicFacultyService = async (
   return createdAcademicFaculty;
 };
 
+// export const getAllAcademicFacultyService = async (
+//   paginationOptions: PaginationOptions,
+//   filterOptions: AcademicFacultyFilterOptions
+// ): Promise<PaginationResponse<IAcademicFaculty[]>> => {
+//   const { limit, page, skip } = calculateSkip(paginationOptions);
+//   const { sortBy, sortOrder } = handleSortByAndSortOrder(paginationOptions);
+//   const { search, ...filters } = filterOptions || {};
+
+//   const searchCondition = generateSearchCondition("or", search, ["title"]);
+
+//   const [academicFaculties, total] = await Promise.all([
+//     await AcademicFaculty.find({
+//       $and: [searchCondition, filters],
+//     })
+//       .skip(skip)
+//       .limit(limit)
+//       .sort({ [sortBy]: sortOrder }),
+//     AcademicFaculty.countDocuments(),
+//   ]);
+
+//   return {
+//     meta: {
+//       page,
+//       limit,
+//       total,
+//     },
+//     data: academicFaculties,
+//   };
+// };
+
 export const getAllAcademicFacultyService = async (
-  paginationOptions: PaginationOptions,
-  filterOptions: AcademicFacultyFilterOptions
-): Promise<PaginationResponse<IAcademicFaculty[]>> => {
-  const { limit, page, skip } = calculateSkip(paginationOptions);
-  const { sortBy, sortOrder } = handleSortByAndSortOrder(paginationOptions);
-  const { search, ...filters } = filterOptions || {};
-
-  const searchCondition = generateSearchCondition("or", search, ["title"]);
-
-  const [academicFaculties, total] = await Promise.all([
-    await AcademicFaculty.find({
-      $and: [searchCondition, filters],
-    })
-      .skip(skip)
-      .limit(limit)
-      .sort({ [sortBy]: sortOrder }),
-    AcademicFaculty.countDocuments(),
-  ]);
-
-  return {
-    meta: {
-      page,
-      limit,
-      total,
-    },
-    data: academicFaculties,
-  };
+  queryObject: QueryObject
+) => {
+  const result = await paginate<
+    AcademicFacultyModel,
+    IAcademicFaculty,
+    { title: string; search: string }
+  >({
+    queryObject,
+    searchFields: ['title'],
+    filterFields: ['title'],
+    filterOptions: ['title', 'search'],
+    model: AcademicFaculty,
+  });
+  return result;
 };
 
 export const getFacultyByIdService = async (
@@ -58,7 +74,7 @@ export const updateAcademicFacultyService = async (
   payload: IAcademicFaculty
 ) => {
   if (Object.keys(payload).length === 0) {
-    throw new ApiError(StatusCodes.BAD_REQUEST, "Missing update data");
+    throw new ApiError(StatusCodes.BAD_REQUEST, 'Missing update data');
   }
 
   const updatedFaculty = await AcademicFaculty.findOneAndUpdate(

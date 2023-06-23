@@ -64,6 +64,21 @@
             "date": 1687262405097,
             "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-20-06-18-error.log",
             "hash": "82b123edcb459ef9201f255f82a42e98b170207b02ee90e00194bec2c1809027"
+        },
+        {
+            "date": 1687455616026,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-22-06-23-error.log",
+            "hash": "a64f451ff314d2d8c7f8ac364518cf42cc6616cdbed41c6862c30ff1a6172470"
+        },
+        {
+            "date": 1687509477764,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-23-06-14-error.log",
+            "hash": "9e202b6a151beae80159155e79e4efa592b63747444ac507925122a03dbce23d"
+        },
+        {
+            "date": 1687511302267,
+            "name": "D:\\Code\\Next Level\\ums\\university_management_auth_service\\logs\\error\\auth-2023-23-06-15-error.log",
+            "hash": "1f9833392b7677950471b6f3f97b9d12804665f0a8e1ab8fee6dc464921579d2"
         }
     ],
     "hashType": "sha256"

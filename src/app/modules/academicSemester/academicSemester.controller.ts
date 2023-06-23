@@ -1,13 +1,7 @@
 import { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import { StatusCodes } from 'http-status-codes';
-import { filterFields } from '../../../constants/filters';
-import { paginationFields } from '../../../constants/pagination';
 import ApiError from '../../../errors/ApiError';
-import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
-import { PaginationOptions } from '../../../types/PaginationOptions';
-import { QueryObject } from '../../../types/QueryObject';
-import { pickOptions } from '../../../utils/pickOptions';
 import { sendResponse } from '../../../utils/sendResponse';
 import { IAcademicSemester } from './academicSemester.interface';
 import {
@@ -34,17 +28,7 @@ export const createSemester = expressAsyncHandler(
 
 export const getAllSemesters = expressAsyncHandler(
   async (req: Request, res: Response) => {
-    const paginationOptions = pickOptions(
-      req.query as QueryObject,
-      paginationFields
-    ) as PaginationOptions;
-
-    const filters = pickOptions(
-      req.query as QueryObject,
-      filterFields
-    ) as AcademicSemesterFilterOptions;
-
-    const result = await getAllSemestersService(paginationOptions, filters);
+    const result = await getAllSemestersService(req.query);
 
     sendResponse<IAcademicSemester>(res, {
       data: result.data,

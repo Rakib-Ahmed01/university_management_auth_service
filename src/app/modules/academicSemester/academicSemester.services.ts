@@ -1,11 +1,12 @@
 import ApiError from '../../../errors/ApiError';
 import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
-import { PaginationOptions } from '../../../types/PaginationOptions';
-import { PaginationResponse } from '../../../types/PaginationResponse';
-import { generateSearchCondition } from '../../../utils/generateSearchCondition';
+import { QueryObject } from '../../../types/QueryObject';
+import { paginate } from '../../../utils/paginate';
 import { validateTitleCode } from '../../../utils/validateTitleCode';
-import { calculateSkip } from './../../../utils/calculateSkip';
-import { IAcademicSemester } from './academicSemester.interface';
+import {
+  AcademicSemesterModel,
+  IAcademicSemester,
+} from './academicSemester.interface';
 import AcademicSemester from './academicSemester.model';
 
 export const createAcademicSemesterService = async (
@@ -24,39 +25,19 @@ export const createAcademicSemesterService = async (
   return createdSemester;
 };
 
-export const getAllSemestersService = async (
-  paginationOptions: PaginationOptions,
-  filterOptions: AcademicSemesterFilterOptions
-): Promise<PaginationResponse<IAcademicSemester[]>> => {
-  const { page, limit, skip } = calculateSkip(paginationOptions);
-  const { sortBy, sortOrder } = paginationOptions;
-  const { search, ...filters } = filterOptions;
-
-  const searchCondition = generateSearchCondition('or', search, [
-    'title',
-    'code',
-    'year',
-  ]);
-
-  const [semesters, total] = await Promise.all([
-    AcademicSemester.find({ $and: [searchCondition, filters] })
-      .skip(skip)
-      .limit(limit)
-      .sort({
-        [sortBy]: sortOrder,
-      })
-      .lean(),
-    AcademicSemester.countDocuments(),
-  ]);
-
-  return {
-    meta: {
-      page,
-      limit,
-      total,
-    },
-    data: semesters,
-  };
+export const getAllSemestersService = async (queryObject: QueryObject) => {
+  const result = await paginate<
+    AcademicSemesterModel,
+    IAcademicSemester,
+    AcademicSemesterFilterOptions
+  >({
+    queryObject,
+    filterFields: ['code', 'search', 'title', 'year'],
+    model: AcademicSemester,
+    searchFields: ['title', 'code', 'year'],
+    filterOptions: ['code', 'search', 'title', 'year'],
+  });
+  return result;
 };
 
 export const getSemesterByIdService = async (
