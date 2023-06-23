@@ -1,6 +1,7 @@
 import ApiError from '../../../errors/ApiError';
 import { AcademicSemesterFilterOptions } from '../../../types/FilterOptions';
 import { QueryObject } from '../../../types/QueryObject';
+import { deleteDataById } from '../../../utils/deleteDataById';
 import { getDataById } from '../../../utils/getDataById';
 import { paginate } from '../../../utils/paginate';
 import { validateTitleCode } from '../../../utils/validateTitleCode';
@@ -69,6 +70,6 @@ export const updateSemesterService = async (
 };
 
 export const deleteSemesterService = async (semesterId: string) => {
-  const result = await AcademicSemester.deleteOne({ _id: semesterId });
+  const result = await deleteDataById(semesterId, AcademicSemester, 'Semester');
   return result;
 };
