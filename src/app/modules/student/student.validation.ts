@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { userBaseZodSchema } from '../users/users.validation';
 import { validateObjectId } from './student.utils';
 
-export const createStudentZodchema = z.object({
+export const createStudentZodSchema = z.object({
   body: z
     .object({
       password: z
@@ -97,4 +97,4 @@ export const createStudentZodchema = z.object({
     .strict(),
 });
 
-export const updateStudentZodchema = createStudentZodchema.deepPartial();
+export const updateStudentZodSchema = createStudentZodSchema.deepPartial();

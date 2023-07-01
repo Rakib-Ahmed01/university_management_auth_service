@@ -7,7 +7,7 @@ import { studentRouter } from '../app/modules/student/student.route';
 export const router = express.Router();
 
 type Route = {
-  path: `/api/v1/${string}`;
+  path: string;
   router: Router;
 };
 

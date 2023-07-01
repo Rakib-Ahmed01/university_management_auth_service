@@ -8,8 +8,8 @@ import {
   updateStudent,
 } from './student.controller';
 import {
-  createStudentZodchema,
-  updateStudentZodchema,
+  createStudentZodSchema,
+  updateStudentZodSchema,
 } from './student.validation';
 
 export const studentRouter = express.Router();
@@ -17,10 +17,10 @@ export const studentRouter = express.Router();
 studentRouter
   .route('/:studentId')
   .get(getStudentById)
-  .patch(validateRequest(updateStudentZodchema), updateStudent)
+  .patch(validateRequest(updateStudentZodSchema), updateStudent)
   .delete(deleteStudent);
 
 studentRouter
   .route('/')
   .get(getAllStudents)
-  .post(validateRequest(createStudentZodchema), createStudent);
+  .post(validateRequest(createStudentZodSchema), createStudent);

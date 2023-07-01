@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Code\\university_management_auth_service\\logs\\success\\.6cb6f1cca8be251add11bdad4b3702fa9e4337fe-audit.json",
+    "files": [
+        {
+            "date": 1688229424169,
+            "name": "D:\\Code\\university_management_auth_service\\logs\\success\\auth-2023-01-07-22-success.log",
+            "hash": "304a4fe25ebbb2b994945c5a74d4432162f8e491e80a1075123b75b0374ca157"
+        },
+        {
+            "date": 1688231025268,
+            "name": "D:\\Code\\university_management_auth_service\\logs\\success\\auth-2023-01-07-23-success.log",
+            "hash": "7fe6e561ada643e7970c92460f6d368d0964ab1cc171f88cef2457f9245a47dc"
+        }
+    ],
+    "hashType": "sha256"
+}

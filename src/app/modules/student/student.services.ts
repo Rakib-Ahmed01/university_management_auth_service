@@ -94,6 +94,7 @@ export const getAllStudentsService = async (queryObject: QueryObject) => {
     model: Student,
     queryObject,
   });
+
   return result;
 };
 

@@ -44,7 +44,7 @@ export const paginate = async <
 
   const searchCondition = generateSearchCondition('or', search, searchFields);
 
-  const [semesters, total] = await Promise.all([
+  const [data, total] = await Promise.all([
     model
       .find({ $and: [searchCondition, filterables] })
       .skip(skip)
@@ -63,6 +63,6 @@ export const paginate = async <
       total,
       totalPages: Math.ceil(total / limit),
     },
-    data: semesters,
+    data: data,
   };
 };

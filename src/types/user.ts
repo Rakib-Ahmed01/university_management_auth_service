@@ -4,17 +4,18 @@ export type Name = {
   lastName: string;
 };
 
-export type Gender = "male" | "female" | "other";
+export type Gender = 'male' | 'female' | 'other';
 
 export type BloodGroup =
-  | "A+"
-  | "A-"
-  | "B+"
-  | "B-"
-  | "AB+"
-  | "AB-"
-  | "O+"
-  | "O-";
+  | 'A+'
+  | 'A-'
+  | 'B+'
+  | 'B-'
+  | 'AB+'
+  | 'AB-'
+  | 'O+'
+  | 'O-';
+
 export type Guardian = {
   fatherName: string;
   fatherOccupation: string;
