@@ -14,6 +14,16 @@
             "date": 1688231025268,
             "name": "D:\\Code\\university_management_auth_service\\logs\\success\\auth-2023-01-07-23-success.log",
             "hash": "7fe6e561ada643e7970c92460f6d368d0964ab1cc171f88cef2457f9245a47dc"
+        },
+        {
+            "date": 1688289557124,
+            "name": "D:\\Code\\university_management_auth_service\\logs\\success\\auth-2023-02-07-15-success.log",
+            "hash": "9d649a8a87018c7ff578aea704c721758139ff073dad2d4376f8a3318a5c5472"
+        },
+        {
+            "date": 1688292016177,
+            "name": "D:\\Code\\university_management_auth_service\\logs\\success\\auth-2023-02-07-16-success.log",
+            "hash": "d275bdd8d8196d0289fcd16ffb004f4cc81dbd45d30acd88fb7f24ea3d7eb27b"
         }
     ],
     "hashType": "sha256"

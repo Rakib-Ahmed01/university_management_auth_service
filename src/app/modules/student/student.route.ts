@@ -1,5 +1,6 @@
 import express from 'express';
 import { validateRequest } from '../../../middlewares/validateRequest';
+import { hashPassword } from '../../../utils/hashPassword';
 import {
   createStudent,
   deleteStudent,
@@ -23,4 +24,4 @@ studentRouter
 studentRouter
   .route('/')
   .get(getAllStudents)
-  .post(validateRequest(createStudentZodSchema), createStudent);
+  .post(validateRequest(createStudentZodSchema), hashPassword(), createStudent);

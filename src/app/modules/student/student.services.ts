@@ -19,7 +19,7 @@ export const createStudentService = async (
 ) => {
   const academicSemester = await AcademicSemester.findOne({
     _id: student.academicSemester,
-  });
+  }).lean();
 
   if (!academicSemester) {
     throwApiError(StatusCodes.BAD_REQUEST, 'Academic Semester not found');
@@ -39,6 +39,7 @@ export const createStudentService = async (
 
     user.id = studentId;
     user.password = password ? password : (defaultUserPassword as string);
+
     user.role = 'student';
 
     student.id = studentId;
@@ -58,7 +59,7 @@ export const createStudentService = async (
     if (!createdUser.length) {
       throwApiError(
         StatusCodes.INTERNAL_SERVER_ERROR,
-        'Failed to create the student. Try Again'
+        'Failed to create the student. Try again'
       );
     }
 
