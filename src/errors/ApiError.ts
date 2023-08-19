@@ -5,8 +5,11 @@ class ApiError extends Error {
     super(message);
     this.status = status;
 
-    if (stack) this.stack = stack;
-    else Error.captureStackTrace(this);
+    if (stack) {
+      this.stack = stack;
+    } else {
+      Error.captureStackTrace(this);
+    }
   }
 }
 

@@ -13,10 +13,12 @@ export const createUserZodSchema = z.object({
       ' , '
     )} are allowed.`,
   }),
-  password: z.string({
-    required_error: 'Password is required',
-    invalid_type_error: 'Password must be a string',
-  }),
+  password: z
+    .string({
+      required_error: 'Password is required',
+      invalid_type_error: 'Password must be a string',
+    })
+    .min(6, 'Password must be at least 6 characters long'),
   student: z
     .string({
       required_error: 'Student is required',

@@ -5,9 +5,10 @@ import { handleMongoServerError } from '../errors/handleMongoServerError';
 import { handleValidationError } from '../errors/handleMongooseValidationError';
 import { handleZodValidationError } from '../errors/handleZodValidationError';
 import { IGenericErrorMessage } from '../types/ErrorMessage';
+import { throwApiError } from '../utils/throwApiError';
 
 export const notFoundErrorHandler: RequestHandler = (req, res, next) => {
-  const error = new ApiError(404, '404 Resource Not Found!');
+  const error = throwApiError(404, '404 Resource Not Found!');
   next(error);
 };
 

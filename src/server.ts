@@ -18,7 +18,7 @@ process.on('uncaughtException', (error) => {
 export async function connectDb() {
   try {
     if (!connection) {
-      connection = await mongoose.connect(mongoURI as string);
+      connection = await mongoose.connect(mongoURI);
     }
     successLogger.info(`Connected to database: ${connection.connection.host}`);
 

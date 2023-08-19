@@ -17,7 +17,11 @@ const userSchema = new Schema(
       },
       required: [true, '`{PATH}` is required'],
     },
-    password: { type: String, required: [true, '`{PATH}` is required'] },
+    password: {
+      type: String,
+      required: [true, '`{PATH}` is required'],
+      minLength: [6, 'Password must be at least 6 characters long'],
+    },
     student: { type: Schema.Types.ObjectId, ref: 'Student' },
     admin: { type: Schema.Types.ObjectId, ref: 'Admin' },
     faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
@@ -31,7 +35,10 @@ const userSchema = new Schema(
 );
 
 userSchema.pre('save', async function (next) {
-  const password = this.password ? this.password : defaultUserPassword;
+  const password = (
+    this.password ? this.password : defaultUserPassword
+  ) as string;
+
   const hashedPassword = await bcrypt.hash(
     password as string,
     Number(saltRounds)

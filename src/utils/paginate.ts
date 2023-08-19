@@ -33,7 +33,7 @@ export const paginate = async <
     'sortBy',
   ]) as PaginationOptions;
 
-  const filters = pickOptions(queryObject as QueryObject, filterFields) as {
+  const filters = pickOptions(queryObject, filterFields) as {
     // eslint-disable-next-line no-unused-vars
     [F in (typeof filterOptions)[number]]: string;
   };
